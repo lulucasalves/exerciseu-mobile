@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "exerciseu-mobile",
+    "slug": "exerciseu-mobile",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "exerciseu-mobile"
+}
