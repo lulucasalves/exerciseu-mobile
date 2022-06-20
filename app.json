@@ -1,11 +1,29 @@
 {
   "expo": {
-    "name": "exerciseu-mobile",
-    "slug": "exerciseu-mobile",
+    "name": "exerciseu",
+    "slug": "exerciseu",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
-  },
-  "name": "exerciseu-mobile"
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "exerciseu",
+    "splash": {
+      "image": "./assets/splash.png",
+      "backgroundColor": "#fff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#fff"
+      },
+      "package": "com.linux.exerciseu"
+    },
+    "platforms": ["ios", "android"]
+  }
 }
