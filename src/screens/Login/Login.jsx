@@ -1,13 +1,12 @@
-import { Text, View } from 'react-native'
+import { AuthButtons } from '../../components/AuthButtons'
 import { Background } from '../../components/Background'
-import { styles } from './styles'
+import { LoginImage } from '../../components/LoginImage'
 
 export function Login() {
   return (
     <Background>
-      <View style={styles.container}>
-        <Text>Olá</Text>
-      </View>
+      <LoginImage />
+      <AuthButtons />
     </Background>
   )
 }
