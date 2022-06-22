@@ -14,7 +14,7 @@ export function Navigation() {
       <TouchableOpacity onPress={() => navigation.navigate('Start')}>
         <Ionicons name="play-outline" size={25} color="#fff" />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Gym')}>
         <Ionicons name="fitness-outline" size={25} color="#fff" />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Home')}>

@@ -8,7 +8,8 @@
     "scheme": "exerciseu",
     "splash": {
       "image": "./assets/splash.png",
-      "backgroundColor": "#fff"
+      "resizeMode": "contain",
+      "backgroundColor": "#508BF5"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -20,7 +21,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
-        "backgroundColor": "#fff"
+        "backgroundColor": "#508BF5"
       },
       "package": "com.linux.exerciseu"
     },

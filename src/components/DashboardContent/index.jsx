@@ -4,7 +4,7 @@ import { BarChart } from 'react-native-gifted-charts'
 import { theme } from '../../styles/theme'
 import { DashboardCard } from '../DashboardCard'
 
-export function DashboardGraphic() {
+export function DashboardContent() {
   const data = [
     { value: 3, label: 'S' },
     { value: 2.5, label: 'T' },
