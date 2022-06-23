@@ -32,8 +32,8 @@ export default function App() {
   return (
     <Background>
       <StatusBar
-        barStyle="light-content"
-        backgroundColor="rgba(0,0,0,0.5)"
+        barStyle="dark-content"
+        backgroundColor="rgba(255,255,255,0.4)"
         translucent
       />
       <Routes />

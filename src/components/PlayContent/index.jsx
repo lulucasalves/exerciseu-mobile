@@ -50,6 +50,7 @@ export function PlayContent() {
         renderItem={({ item }) => (
           <TrainCard data={item} onPress={() => handleSelect(item)} />
         )}
+        showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}
         contentContainerStyle={{ paddingBottom: 270 }}
       />

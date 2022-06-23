@@ -4,7 +4,10 @@ import { theme } from '../styles/theme'
 import { Login } from '../screens/Login'
 import { Home } from '../screens/Home'
 import { Start } from '../screens/Start'
-import { Gym } from '../screens/Gym'
+import { GymAll } from '../screens/GymAll'
+import { GymRecent } from '../screens/GymRecent'
+import { GymExplore } from '../screens/GymExplore'
+import { Configuration } from '../screens/Configuration'
 const { Navigator, Screen } = createStackNavigator()
 
 export function AuthRoutes() {
@@ -18,7 +21,10 @@ export function AuthRoutes() {
       <Screen name="Login" component={Login} />
       <Screen name="Home" component={Home} />
       <Screen name="Start" component={Start} />
-      <Screen name="Gym" component={Gym} />
+      <Screen name="GymAll" component={GymAll} />
+      <Screen name="GymRecent" component={GymRecent} />
+      <Screen name="GymExplore" component={GymExplore} />
+      <Screen name="Configuration" component={Configuration} />
     </Navigator>
   )
 }

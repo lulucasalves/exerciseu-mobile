@@ -1,13 +1,11 @@
 import { Background } from '../../components/Background'
+import { ConfigHeader } from '../../components/ConfigHeader'
 import { Navigation } from '../../components/Navigation'
-import { PlayContent } from '../../components/PlayContent'
-import { PlayHeader } from '../../components/PlayHeader'
 
-export function Gym() {
+export function Configuration() {
   return (
     <Background>
-      <PlayHeader />
-      <PlayContent />
+      <ConfigHeader page="config" />
       <Navigation />
     </Background>
   )

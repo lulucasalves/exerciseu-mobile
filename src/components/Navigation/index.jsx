@@ -14,13 +14,13 @@ export function Navigation() {
       <TouchableOpacity onPress={() => navigation.navigate('Start')}>
         <Ionicons name="play-outline" size={25} color="#fff" />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Gym')}>
+      <TouchableOpacity onPress={() => navigation.navigate('GymAll')}>
         <Ionicons name="fitness-outline" size={25} color="#fff" />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Home')}>
         <Ionicons name="trophy-outline" size={25} color="#fff" />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Configuration')}>
         <Ionicons name="apps-outline" size={25} color="#fff" />
       </TouchableOpacity>
     </View>
