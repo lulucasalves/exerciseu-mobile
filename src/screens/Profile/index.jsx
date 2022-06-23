@@ -1,13 +1,11 @@
 import { Background } from '../../components/Background'
-import { ConfigContent } from '../../components/ConfigContent'
 import { ConfigHeader } from '../../components/ConfigHeader'
 import { Navigation } from '../../components/Navigation'
 
-export function Configuration() {
+export function Profile() {
   return (
     <Background>
-      <ConfigHeader page="config" />
-      <ConfigContent />
+      <ConfigHeader page="profile" />
       <Navigation />
     </Background>
   )

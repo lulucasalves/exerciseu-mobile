@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native'
+import { FlatList, Text, View } from 'react-native'
 import { styles } from './styles'
 import { BarChart } from 'react-native-gifted-charts'
 import { theme } from '../../styles/theme'
@@ -32,9 +32,17 @@ export function DashboardContent() {
         height={120}
       />
       <Text style={styles.training}>Últimos treinos</Text>
-      <DashboardCard train="Treino de pernas" time="30m" finish="7:00h" />
-      <DashboardCard train="Treino de pernas" time="30m" finish="7:00h" />
-      <DashboardCard train="Treino de pernas" time="30m" finish="7:00h" />
+      <FlatList
+        data={[
+          { time: '30m', id: '1', name: 'Treino de pernas', finish: '7:00h' },
+          { time: '30m', id: '2', name: 'Treino de pernas', finish: '7:00h' },
+          { time: '30m', id: '3', name: 'Treino de pernas', finish: '7:00h' }
+        ]}
+        renderItem={({ item }) => <DashboardCard data={item} />}
+        showsVerticalScrollIndicator={false}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={{ paddingBottom: 270 }}
+      />
     </View>
   )
 }

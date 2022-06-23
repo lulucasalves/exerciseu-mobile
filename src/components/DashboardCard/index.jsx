@@ -5,14 +5,14 @@ import { styles } from './styles'
 import { Text } from 'react-native'
 import { TouchableOpacity } from 'react-native'
 
-export function DashboardCard(props) {
+export function DashboardCard({ data, ...props }) {
   return (
-    <TouchableOpacity style={styles.card}>
+    <TouchableOpacity {...props} style={styles.card}>
       <View style={styles.text}>
-        <Text style={styles.train}>{props.train}</Text>
+        <Text style={styles.train}>{data.name}</Text>
         <Text
           style={styles.finish}
-        >{`${props.time} Termina: ${props.finish}`}</Text>
+        >{`${data.time} Termina: ${data.finish}`}</Text>
       </View>
       <Ionicons name="play" size={40} color={theme.primary} />
     </TouchableOpacity>

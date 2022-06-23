@@ -8,6 +8,7 @@ import { GymAll } from '../screens/GymAll'
 import { GymRecent } from '../screens/GymRecent'
 import { GymExplore } from '../screens/GymExplore'
 import { Configuration } from '../screens/Configuration'
+import { Profile } from '../screens/Profile'
 const { Navigator, Screen } = createStackNavigator()
 
 export function AuthRoutes() {
@@ -25,6 +26,7 @@ export function AuthRoutes() {
       <Screen name="GymRecent" component={GymRecent} />
       <Screen name="GymExplore" component={GymExplore} />
       <Screen name="Configuration" component={Configuration} />
+      <Screen name="Profile" component={Profile} />
     </Navigator>
   )
 }

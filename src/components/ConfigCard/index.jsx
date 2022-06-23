@@ -5,14 +5,12 @@ import { styles } from './styles'
 import { Text } from 'react-native'
 import { TouchableOpacity } from 'react-native'
 
-export function GymAllCard({ data, ...props }) {
+export function ConfigCard({ data, ...props }) {
   return (
     <TouchableOpacity {...props} style={styles.card}>
-      <View style={styles.text}>
-        <Text style={styles.train}>{data.name}</Text>
-        <Text style={styles.finish}>{data.finish}</Text>
-      </View>
-      <Ionicons name="create-outline" size={35} color={theme.primary} />
+      <Text style={styles.name}>{data.name}</Text>
+
+      {data.icon}
     </TouchableOpacity>
   )
 }
