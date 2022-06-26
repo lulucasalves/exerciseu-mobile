@@ -12,13 +12,13 @@ export const styles = StyleSheet.create({
   performance: {
     fontFamily: 'WorkSans_500Medium',
     fontSize: 20,
-    color: theme.color,
+    color: theme.text,
   },
   training: {
     marginTop: 20,
     fontFamily: 'WorkSans_500Medium',
     fontSize: 20,
-    color: theme.color
+    color: theme.text
   },
   
 })

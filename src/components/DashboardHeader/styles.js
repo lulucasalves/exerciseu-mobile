@@ -51,7 +51,7 @@ export const styles = StyleSheet.create({
   barGray: {
     width: '100%',
     height: 5,
-    backgroundColor: '#ccc',
+    backgroundColor: theme.gray,
     left: 0,
     position: 'absolute',
     top: 0,
@@ -71,7 +71,7 @@ export const styles = StyleSheet.create({
   },
   offensiveText: {
     fontFamily: 'WorkSans_500Medium',
-    marginRight: 5,
+    marginLeft: 5,
     fontSize: 18
   }
 })

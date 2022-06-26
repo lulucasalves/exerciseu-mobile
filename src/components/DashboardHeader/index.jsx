@@ -29,8 +29,8 @@ export function DashboardHeader() {
         </View>
       </View>
       <View style={styles.offensive}>
+        <MaterialCommunityIcons name="fire" size={30} color={theme.fire} />
         <Text style={styles.offensiveText}>{offensive}</Text>
-        <MaterialCommunityIcons name="fire" size={35} color={theme.fire} />
       </View>
     </View>
   )

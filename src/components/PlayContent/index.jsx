@@ -1,5 +1,7 @@
+import { Ionicons } from '@expo/vector-icons'
 import { FlatList, Text } from 'react-native'
 import { View } from 'react-native'
+import { theme } from '../../styles/theme'
 import { TrainCard } from '../TrainCard'
 import { styles } from './styles'
 
@@ -23,28 +25,13 @@ export function PlayContent() {
         data={[
           { time: 5 * 60, id: '1', name: 'Flexão', type: 1 },
           { time: 60, id: '2', name: '', type: 0 },
-          {
-            time: 30,
-            id: '3',
-            name: 'Agachamento',
-            type: 2
-          },
+          { time: 30, id: '3', name: 'Agachamento', type: 2 },
           { time: 5 * 60, id: '4', name: 'Flexão', type: 1 },
           { time: 60, id: '5', name: '', type: 0 },
-          {
-            time: 30,
-            id: '6',
-            name: 'Agachamento',
-            type: 2
-          },
+          { time: 30, id: '6', name: 'Agachamento', type: 2 },
           { time: 5 * 60, id: '7', name: 'Flexão', type: 1 },
           { time: 60, id: '8', name: '', type: 0 },
-          {
-            time: 30,
-            id: '10',
-            name: 'Agachamento',
-            type: 2
-          },
+          { time: 30, id: '10', name: 'Agachamento', type: 2 },
           { time: 5 * 60, id: '9', name: 'Flexão', type: 1 }
         ]}
         renderItem={({ item }) => (

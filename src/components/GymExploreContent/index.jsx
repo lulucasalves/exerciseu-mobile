@@ -1,6 +1,5 @@
 import { FlatList } from 'react-native'
 import { View } from 'react-native'
-import { GymAllCard } from '../GymAllCard'
 import { GymExploreCard } from '../GymExploreCard'
 import { styles } from './styles'
 
@@ -20,16 +19,7 @@ export function GymExploreContent() {
             finish: '1 hora e 30 minutos',
             id: '4',
             name: 'Treino de Panturrilha'
-          },
-          { finish: '1 hora e 30 minutos', id: '5', name: 'Treino de Biceps' },
-          {
-            finish: '1 hora e 30 minutos',
-            id: '6',
-            name: 'Treino de fim de semana'
-          },
-          { finish: '1 hora e 30 minutos', id: '7', name: 'Treino de 2 horas' },
-          { finish: '1 hora e 30 minutos', id: '8', name: 'Treino daora' },
-          { finish: '1 hora e 30 minutos', id: '9', name: 'Treino normal' }
+          }
         ]}
         renderItem={({ item }) => (
           <GymExploreCard data={item} onPress={() => handleSelect(item)} />

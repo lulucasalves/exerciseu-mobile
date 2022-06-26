@@ -6,11 +6,11 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: theme.background,
     borderRadius: 10,
     padding: 10,
     backgroundColor: theme.primary,
-    shadowColor: 'rgba(0,0,0,0.8)',
+    shadowColor: theme.gray8,
     shadowOffset: {
       width: 0,
       height: 2
@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
   },
   btnText: {
     fontSize: 18,
-    color: '#fff',
+    color: theme.background,
     fontFamily: 'WorkSans_500Medium',
     marginLeft: 15,
     marginTop: 2

@@ -14,28 +14,6 @@ export function ConfigHeader({ page }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        onPress={() => navigate('Configuration')}
-        activeOpacity={0.9}
-        style={[
-          styles.div,
-          {
-            backgroundColor:
-              page === 'config' ? theme.background : theme.primary
-          }
-        ]}
-      >
-        <Text
-          style={[
-            styles.text,
-            {
-              color: page === 'config' ? theme.primary : theme.background
-            }
-          ]}
-        >
-          Configurações
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
         onPress={() => navigate('Profile')}
         activeOpacity={0.9}
         style={[
@@ -55,6 +33,28 @@ export function ConfigHeader({ page }) {
           ]}
         >
           Perfil
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigate('Configuration')}
+        activeOpacity={0.9}
+        style={[
+          styles.div,
+          {
+            backgroundColor:
+              page === 'config' ? theme.background : theme.primary
+          }
+        ]}
+      >
+        <Text
+          style={[
+            styles.text,
+            {
+              color: page === 'config' ? theme.primary : theme.background
+            }
+          ]}
+        >
+          Configurações
         </Text>
       </TouchableOpacity>
     </View>

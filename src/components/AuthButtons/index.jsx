@@ -5,7 +5,7 @@ import { FacebookButton } from '../FacebookButton'
 import { GoogleButton } from '../GoogleButton'
 import { styles } from './styles'
 
-export function AuthButtons() {
+export function AuthButtons({ stateModal }) {
   const navigation = useNavigation()
 
   function goToHome() {
@@ -16,7 +16,7 @@ export function AuthButtons() {
     <View style={styles.container}>
       <GoogleButton onPress={() => goToHome()} />
       <FacebookButton onPress={() => goToHome()} />
-      <DigitalButton onPress={() => goToHome()} />
+      <DigitalButton onPress={() => stateModal(true)} />
     </View>
   )
 }

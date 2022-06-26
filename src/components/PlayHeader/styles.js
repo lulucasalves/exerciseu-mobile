@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
     fontFamily: 'WorkSans_500Medium',
     fontSize: 18,
     marginLeft: 15,
-    color: theme.background
+    color: theme.background,
+    marginTop: -4
   }
 })

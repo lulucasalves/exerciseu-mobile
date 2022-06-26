@@ -6,15 +6,18 @@ export const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderColor: 'rgba(0,0,0,0.2)',
-    padding: 20,
+    borderColor: theme.gray,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 30,
+    paddingBottom: 30,
+
     flexDirection: 'row',
-    marginTop: 15,
     borderBottomWidth: 1
   },
   name: {
     fontFamily: 'WorkSans_600SemiBold',
     fontSize: 20,
-    color: 'rgba(0,0,0,0.6)'
+    color: theme.muted
   }
 })

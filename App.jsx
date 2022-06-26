@@ -11,6 +11,7 @@ import {
 } from '@expo-google-fonts/work-sans'
 import AppLoading from 'expo-app-loading'
 import { Routes } from './src/routes'
+import { theme } from './src/styles/theme'
 
 LogBox.ignoreLogs([
   'You are not currently signed in to Expo on your development machine.'
@@ -33,7 +34,7 @@ export default function App() {
     <Background>
       <StatusBar
         barStyle="dark-content"
-        backgroundColor="rgba(255,255,255,0.4)"
+        backgroundColor={theme.statusBar}
         translucent
       />
       <Routes />

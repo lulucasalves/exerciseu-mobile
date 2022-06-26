@@ -3,7 +3,6 @@ import { styles } from './styles'
 import { Ionicons } from '@expo/vector-icons'
 import { theme } from '../../styles/theme'
 import { ConfigCard } from '../ConfigCard'
-import { Octicons } from '@expo/vector-icons'
 
 export function ConfigContent() {
   return (
@@ -13,9 +12,7 @@ export function ConfigContent() {
           {
             id: '1',
             name: 'Idioma',
-            icon: (
-              <Ionicons name="flag-outline" size={35} color="rgba(0,0,0,0.6)" />
-            )
+            icon: <Ionicons name="flag-outline" size={35} color={theme.muted} />
           },
           {
             id: '2',
@@ -24,7 +21,7 @@ export function ConfigContent() {
               <Ionicons
                 name="notifications-outline"
                 size={35}
-                color="rgba(0,0,0,0.6)"
+                color={theme.muted}
               />
             )
           },
@@ -32,37 +29,25 @@ export function ConfigContent() {
             id: '3',
             name: 'Informações pessoais',
             icon: (
-              <Ionicons
-                name="person-outline"
-                size={35}
-                color="rgba(0,0,0,0.6)"
-              />
+              <Ionicons name="person-outline" size={35} color={theme.muted} />
             )
           },
           {
             id: '4',
-            name: 'Vizualização de treinos',
-            icon: (
-              <Ionicons name="eye-outline" size={35} color="rgba(0,0,0,0.6)" />
-            )
+            name: 'Login com digital',
+            icon: <Ionicons name="finger-print" size={35} color={theme.muted} />
           },
           {
             id: '5',
             name: 'Tema',
             icon: (
-              <Ionicons
-                name="sunny-outline"
-                size={35}
-                color="rgba(0,0,0,0.6)"
-              />
+              <Ionicons name="sunny-outline" size={35} color={theme.muted} />
             )
           },
           {
             id: '6',
             name: 'Sair',
-            icon: (
-              <Ionicons name="exit-outline" size={35} color="rgba(0,0,0,0.6)" />
-            )
+            icon: <Ionicons name="exit-outline" size={35} color={theme.muted} />
           },
           {
             id: '7',
@@ -71,7 +56,7 @@ export function ConfigContent() {
               <Ionicons
                 name="backspace-outline"
                 size={35}
-                color="rgba(0,0,0,0.6)"
+                color={theme.muted}
               />
             )
           }
@@ -79,6 +64,7 @@ export function ConfigContent() {
         renderItem={({ item }) => <ConfigCard data={item} />}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}
+        contentContainerStyle={{ paddingBottom: 146 }}
       />
     </View>
   )

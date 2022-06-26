@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { theme } from '../../styles/theme'
 
 export const styles = StyleSheet.create({
   container: {
@@ -10,7 +11,7 @@ export const styles = StyleSheet.create({
   },
   overlay: {
     position: 'absolute',
-    backgroundColor: 'rgba(0,0,0,0.7)',
+    backgroundColor: theme.overlay,
     width: '100%',
     height: '65%',
     paddingLeft: 20,
