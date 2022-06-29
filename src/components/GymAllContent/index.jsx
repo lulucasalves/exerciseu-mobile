@@ -1,37 +1,24 @@
+import { useNavigation } from '@react-navigation/native'
 import { FlatList } from 'react-native'
 import { View } from 'react-native'
+import { useSelector } from 'react-redux'
 import { GymAllCard } from '../GymAllCard'
 import { styles } from './styles'
 
 export function GymAllContent() {
-  function handleSelect(val) {
-    console.log(val)
+  const navigation = useNavigation()
+  const { trains } = useSelector((auth) => auth.train)
+
+  function handleSelect() {
+    navigation.navigate('Exercise')
   }
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={[
-          { finish: '1 hora e 30 minutos', id: '1', name: 'Treino de braços' },
-          { finish: '1 hora e 30 minutos', id: '2', name: 'Treino de pernas' },
-          { finish: '1 hora e 30 minutos', id: '3', name: 'Cardio' },
-          {
-            finish: '1 hora e 30 minutos',
-            id: '4',
-            name: 'Treino de Panturrilha'
-          },
-          { finish: '1 hora e 30 minutos', id: '5', name: 'Treino de Biceps' },
-          {
-            finish: '1 hora e 30 minutos',
-            id: '6',
-            name: 'Treino de fim de semana'
-          },
-          { finish: '1 hora e 30 minutos', id: '7', name: 'Treino de 2 horas' },
-          { finish: '1 hora e 30 minutos', id: '8', name: 'Treino daora' },
-          { finish: '1 hora e 30 minutos', id: '9', name: 'Treino normal' }
-        ]}
+        data={trains}
         renderItem={({ item }) => (
-          <GymAllCard data={item} onPress={() => handleSelect(item)} />
+          <GymAllCard data={item} onPress={() => handleSelect()} />
         )}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}

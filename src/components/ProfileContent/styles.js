@@ -31,7 +31,9 @@ export const styles = StyleSheet.create({
   },
   statistics: {
     marginTop: 15,
-    width: '100%'
+    width: '100%',
+    paddingLeft: 20,
+    paddingRight: 20
   },
   medalLeague: {
     flexDirection: 'row',
@@ -48,7 +50,7 @@ export const styles = StyleSheet.create({
   },
   xp: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   offensive: {
     flexDirection: 'row',

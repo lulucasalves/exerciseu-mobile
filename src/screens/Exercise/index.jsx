@@ -1,16 +1,14 @@
 import { useState } from 'react'
 import { styles } from './styles'
 import { Background } from '../../components/Background'
-import { ModalPlay } from '../../components/ModalPlay'
-import { ModalView } from '../../components/ModalView'
 import { Navigation } from '../../components/Navigation'
-import { PlayContent } from '../../components/PlayContent'
-import { PlayHeader } from '../../components/PlayHeader'
 import { TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { theme } from '../../styles/theme'
+import { ExerciseHeader } from '../../components/ExerciseHeader'
+import { ExerciseContent } from '../../components/ExerciseContent'
 
-export function Play() {
+export function Exercise() {
   const [modal, setModal] = useState(false)
 
   function setModalState(bool) {
@@ -19,15 +17,15 @@ export function Play() {
 
   return (
     <Background>
-      <PlayHeader statusModal={setModalState} />
-      <PlayContent />
+      <ExerciseHeader />
+      <ExerciseContent />
       <Navigation />
 
-      <ModalView height={220} visible={modal} statusModal={setModalState}>
-        <ModalPlay />
-      </ModalView>
       <TouchableOpacity style={styles.playFloat}>
         <Ionicons name="play" size={25} color={theme.background} />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.addFloat}>
+        <Ionicons name="add" size={30} color={theme.background} />
       </TouchableOpacity>
     </Background>
   )

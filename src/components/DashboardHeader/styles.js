@@ -33,15 +33,10 @@ export const styles = StyleSheet.create({
   },
   level: {
     fontFamily: 'WorkSans_400Regular',
-    fontSize: 16
+    fontSize: 16,
+    marginRight: 20
   },
-  league: {
-    width: 20,
-    height: 20,
-    backgroundColor: theme.fire,
-    borderRadius: 100,
-    marginLeft: 20
-  },
+
   barDiv: {
     width: 100,
     height: 5,

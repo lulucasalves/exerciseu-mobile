@@ -15,7 +15,7 @@ export function Login() {
     <Background>
       <LoginImage />
       <AuthButtons stateModal={setModalState} />
-      <ModalView height={480} visible={modal} statusModal={setModalState}>
+      <ModalView height={350} visible={modal} statusModal={setModalState}>
         <ModalDigital stateModal={setModalState} />
       </ModalView>
     </Background>

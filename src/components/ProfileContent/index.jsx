@@ -33,18 +33,18 @@ export function ProfileContent() {
                 size={25}
                 color={theme.medal}
               />
-              <Text style={[styles.data, { marginLeft: 10 }]}>{medals}</Text>
+              <Text style={[styles.data, { marginLeft: 5 }]}>{medals}</Text>
             </View>
           </View>
           <View>
             <Text style={styles.title}>Liga</Text>
             <View style={styles.league}>
               <MaterialCommunityIcons
-                name="circle"
+                name="cards-diamond-outline"
                 size={20}
                 color={theme.fire}
               />
-              <Text style={[styles.data, { marginLeft: 10 }]}>{league}</Text>
+              <Text style={[styles.data, { marginLeft: 5 }]}>{league}</Text>
             </View>
           </View>
         </View>
@@ -64,7 +64,7 @@ export function ProfileContent() {
                 color={theme.fire}
               />
               <Text
-                style={[styles.data, { marginLeft: 10 }]}
+                style={[styles.data, { marginLeft: 5 }]}
               >{`${offensive} dias`}</Text>
             </View>
           </View>

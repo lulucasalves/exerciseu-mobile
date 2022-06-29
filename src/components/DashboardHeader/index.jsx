@@ -20,7 +20,11 @@ export function DashboardHeader() {
         <View style={styles.levelSession}>
           <View style={styles.levelLeague}>
             <Text style={styles.level}>Nível {level}</Text>
-            <View style={styles.league} />
+            <MaterialCommunityIcons
+              name="cards-diamond-outline"
+              size={20}
+              color={theme.fire}
+            />
           </View>
           <View style={styles.barDiv}>
             <View style={styles.barGray} />

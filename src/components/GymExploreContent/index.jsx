@@ -1,26 +1,22 @@
+import { useNavigation } from '@react-navigation/native'
 import { FlatList } from 'react-native'
 import { View } from 'react-native'
+import { useSelector } from 'react-redux'
 import { GymExploreCard } from '../GymExploreCard'
 import { styles } from './styles'
 
 export function GymExploreContent() {
-  function handleSelect(val) {
-    console.log(val)
+  const navigation = useNavigation()
+  const { trains } = useSelector((auth) => auth.train)
+
+  function handleSelect() {
+    navigation.navigate('Exercise')
   }
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={[
-          { finish: '1 hora e 30 minutos', id: '1', name: 'Treino de braços' },
-          { finish: '1 hora e 30 minutos', id: '2', name: 'Treino de pernas' },
-          { finish: '1 hora e 30 minutos', id: '3', name: 'Cardio' },
-          {
-            finish: '1 hora e 30 minutos',
-            id: '4',
-            name: 'Treino de Panturrilha'
-          }
-        ]}
+        data={trains}
         renderItem={({ item }) => (
           <GymExploreCard data={item} onPress={() => handleSelect(item)} />
         )}

@@ -12,6 +12,8 @@ import {
 import AppLoading from 'expo-app-loading'
 import { Routes } from './src/routes'
 import { theme } from './src/styles/theme'
+import { Provider } from 'react-redux'
+import store from './src/store'
 
 LogBox.ignoreLogs([
   'You are not currently signed in to Expo on your development machine.'
@@ -31,13 +33,15 @@ export default function App() {
   }
 
   return (
-    <Background>
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor={theme.statusBar}
-        translucent
-      />
-      <Routes />
-    </Background>
+    <Provider store={store}>
+      <Background>
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor={theme.statusBar}
+          translucent
+        />
+        <Routes />
+      </Background>
+    </Provider>
   )
 }

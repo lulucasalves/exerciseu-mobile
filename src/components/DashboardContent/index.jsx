@@ -3,6 +3,7 @@ import { styles } from './styles'
 import { BarChart } from 'react-native-gifted-charts'
 import { theme } from '../../styles/theme'
 import { DashboardCard } from '../DashboardCard'
+import { useSelector } from 'react-redux'
 
 export function DashboardContent() {
   const data = [
@@ -14,6 +15,8 @@ export function DashboardContent() {
     { value: 1.2, label: 'S' },
     { value: 3, label: 'D' }
   ]
+
+  const { trains } = useSelector((auth) => auth.train)
 
   return (
     <View style={styles.container}>
@@ -33,11 +36,7 @@ export function DashboardContent() {
       />
       <Text style={styles.training}>Últimos treinos</Text>
       <FlatList
-        data={[
-          { time: '30m', id: '1', name: 'Treino de pernas', finish: '7:00h' },
-          { time: '30m', id: '2', name: 'Treino de pernas', finish: '7:00h' },
-          { time: '30m', id: '3', name: 'Treino de pernas', finish: '7:00h' }
-        ]}
+        data={trains.slice(0, 3)}
         renderItem={({ item }) => <DashboardCard data={item} />}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}

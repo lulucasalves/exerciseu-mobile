@@ -3,15 +3,19 @@ import { theme } from '../../styles/theme'
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
     zIndex: 100,
     backgroundColor: theme.background,
     borderTopLeftRadius: 25,
-    borderTopRightRadius: 25
+    borderTopRightRadius: 25,
+    position: 'absolute',
+    bottom: 0,
+    width: '100%'
   },
   overlay: {
-    flex: 1,
-    backgroundColor: theme.overlay
+    backgroundColor: theme.overlay,
+    position: 'relative',
+    width: '100%',
+    height: '100%'
   },
   bar: {
     width: 39,

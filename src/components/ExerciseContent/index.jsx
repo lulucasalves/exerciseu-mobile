@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { TrainCard } from '../TrainCard'
 import { styles } from './styles'
 
-export function PlayContent() {
+export function ExerciseContent() {
   const time = '1:20:00h'
   const xp = 120
   const finish = '4:00am'
@@ -17,6 +17,8 @@ export function PlayContent() {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Título do treino</Text>
+
       <View style={styles.textContainer}>
         <Text style={styles.totalTime}>{time}</Text>
         <Text style={styles.xp}>{`+${xp}xp`}</Text>
@@ -29,7 +31,7 @@ export function PlayContent() {
         )}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={{ paddingBottom: 270 }}
+        contentContainerStyle={{ paddingBottom: 370 }}
       />
     </View>
   )

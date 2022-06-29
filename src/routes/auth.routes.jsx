@@ -10,6 +10,7 @@ import { GymExplore } from '../screens/GymExplore'
 import { Configuration } from '../screens/Configuration'
 import { Profile } from '../screens/Profile'
 import { ChampionShip } from '../screens/Championship'
+import { Exercise } from '../screens/Exercise'
 const { Navigator, Screen } = createStackNavigator()
 
 export function AuthRoutes() {
@@ -29,6 +30,7 @@ export function AuthRoutes() {
       <Screen name="Championship" component={ChampionShip} />
       <Screen name="Configuration" component={Configuration} />
       <Screen name="Profile" component={Profile} />
+      <Screen name="Exercise" component={Exercise} />
     </Navigator>
   )
 }
