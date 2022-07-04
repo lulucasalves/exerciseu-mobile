@@ -1,23 +1,32 @@
 import { useNavigation } from '@react-navigation/native'
 import { useState } from 'react'
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { useDispatch } from 'react-redux'
+import { addTrain } from '../../store/train'
 import { theme } from '../../styles/theme'
 import { styles } from './styles'
 
 export function ModalTrain({ statusModal }) {
   const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-
+  const dispatch = useDispatch()
   const navigation = useNavigation()
 
   function create() {
+    dispatch(
+      addTrain({
+        finish: '0 minutos',
+        id: '9',
+        name: title
+      })
+    )
+
     navigation.navigate('Exercise')
     statusModal(false)
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Título *</Text>
+      <Text style={styles.label}>Título</Text>
 
       <TextInput
         placeholderTextColor={theme.textMuted}
@@ -29,18 +38,7 @@ export function ModalTrain({ statusModal }) {
         ]}
         placeholder="Nome do treino"
       />
-      <Text style={styles.label}>Descrição</Text>
 
-      <TextInput
-        placeholderTextColor={theme.textMuted}
-        value={description}
-        onChangeText={setDescription}
-        style={[
-          styles.input,
-          { borderColor: description ? theme.primary : theme.gray }
-        ]}
-        placeholder="Descrição do treino"
-      />
       <View style={styles.optDiv}>
         <TouchableOpacity
           onPress={() => statusModal(false)}

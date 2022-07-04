@@ -38,7 +38,7 @@ const trainSlice = createSlice({
   },
   reducers: {
     addTrain: (state, action) => {
-      state.trains.push(action)
+      state.trains.push(action.payload)
     }
   }
 })

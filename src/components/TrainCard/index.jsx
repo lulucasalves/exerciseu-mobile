@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import { theme } from '../../styles/theme'
 import { styles } from './styles'
 
@@ -8,19 +8,24 @@ export function TrainCard({ data, ...props }) {
       {...props}
       style={[
         styles.card,
-        { borderColor: data.type > 0 ? theme.primary : theme.yellow }
+        { borderColor: !data.rest ? theme.primary : theme.yellow }
       ]}
     >
       <Text
         style={[
           styles.time,
-          { color: data.type > 0 ? theme.primary : theme.yellow }
+          { color: !data.rest ? theme.primary : theme.yellow }
         ]}
       >
-        {data.type > 1 ? `${data.time}x` : `${data.time / 60}m`}
+        {`${data.time / 60}m`}
       </Text>
 
-      <Text style={styles.train}>{data.type > 0 ? data.name : 'Descanso'}</Text>
+      <View style={styles.texts}>
+        <Text style={styles.train}>{!data.rest ? data.name : 'Descanso'}</Text>
+        {data.quantity > 1 && (
+          <Text style={styles.quantity}>{`${data.quantity}x`}</Text>
+        )}
+      </View>
     </TouchableOpacity>
   )
 }

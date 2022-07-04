@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
+import { useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import { View } from 'react-native'
 import { useSelector } from 'react-redux'
@@ -8,6 +9,11 @@ import { styles } from './styles'
 export function GymAllContent() {
   const navigation = useNavigation()
   const { trains } = useSelector((auth) => auth.train)
+  const [train, setTrain] = useState()
+
+  useEffect(() => {
+    setTrain(trains)
+  }, [trains])
 
   function handleSelect() {
     navigation.navigate('Exercise')
@@ -16,9 +22,13 @@ export function GymAllContent() {
   return (
     <View style={styles.container}>
       <FlatList
-        data={trains}
+        data={train}
         renderItem={({ item }) => (
-          <GymAllCard data={item} onPress={() => handleSelect()} />
+          <GymAllCard
+            data={item}
+            onPress={() => handleSelect()}
+            key={item.key}
+          />
         )}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}

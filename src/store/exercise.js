@@ -6,15 +6,16 @@ const exerciseSlice = createSlice({
     currentExercise: {
       title: '',
       totalTime: '',
-      xp: ''
+      xp: '',
+      id: '1'
     },
     exercises: [
-      { time: 5 * 60, id: '1', name: 'Flexão', type: 1 },
-      { time: 60, id: '2', name: '', type: 0 },
-      { time: 30, id: '3', name: 'Agachamento', type: 2 },
-      { time: 5 * 60, id: '4', name: 'Flexão', type: 1 },
-      { time: 60, id: '5', name: '', type: 0 },
-      { time: 30, id: '6', name: 'Agachamento', type: 2 }
+      { time: 5 * 60, id: '1', name: 'Flexão', rest: false, quantity: 30 },
+      { time: 60, id: '2', name: '', rest: true, quantity: 0 },
+      { time: 30, id: '3', name: 'Agachamento', rest: false, quantity: 20 },
+      { time: 5 * 60, id: '4', name: 'Flexão', rest: false, quantity: 0 },
+      { time: 60, id: '5', name: '', rest: true, quantity: 0 },
+      { time: 30, id: '6', name: 'Agachamento', rest: false, quantity: 0 }
     ]
   },
   reducers: {
@@ -22,7 +23,7 @@ const exerciseSlice = createSlice({
       state.currentExercise = action.payload
     },
     addExercises: (state, action) => {
-      state.exercises.push(action)
+      state.exercises.push(action.payload)
     }
   }
 })

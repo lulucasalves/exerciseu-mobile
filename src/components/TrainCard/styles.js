@@ -21,5 +21,12 @@ export const styles = StyleSheet.create({
     fontFamily: 'WorkSans_500Medium',
     fontSize: 26
   },
-  list: {}
+  quantity: {
+    fontFamily: 'WorkSans_400Regular',
+    fontSize: 16,
+    color: theme.muted
+  },
+  texts: {
+    alignItems: 'flex-end'
+  }
 })

@@ -23,7 +23,7 @@ export function GymAll() {
       <GymAllContent />
       <Navigation />
 
-      <ModalView height={350} visible={modal} statusModal={setModalState}>
+      <ModalView height={260} visible={modal} statusModal={setModalState}>
         <ModalTrain statusModal={setModalState} />
       </ModalView>
       <TouchableOpacity onPress={() => setModal(true)} style={styles.playFloat}>

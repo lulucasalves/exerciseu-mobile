@@ -7,7 +7,7 @@ import { TouchableOpacity } from 'react-native'
 
 export function GymAllCard({ data, ...props }) {
   return (
-    <TouchableOpacity {...props} style={styles.card}>
+    <TouchableOpacity {...props} style={styles.card} >
       <View style={styles.text}>
         <Text style={styles.train}>{data.name}</Text>
         <Text style={styles.finish}>{data.finish}</Text>
