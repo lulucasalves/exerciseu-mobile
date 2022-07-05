@@ -17,7 +17,7 @@ export function TrainCard({ data, ...props }) {
           { color: !data.rest ? theme.primary : theme.yellow }
         ]}
       >
-        {`${data.time / 60}m`}
+        {`${parseInt(data.time / 60 < 1 ? 1 : data.time / 60)}m`}
       </Text>
 
       <View style={styles.texts}>

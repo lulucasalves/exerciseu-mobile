@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { useDispatch } from 'react-redux'
-import { addExercises } from '../../store/exercise'
+import { useDispatch, useSelector } from 'react-redux'
+import { addExercises, setEditExercises } from '../../store/exercise'
 import { theme } from '../../styles/theme'
+import { formatQuantity, formatTime } from '../../utils/formatTime'
 import { styles } from './styles'
 
 export function ModalExercise({ statusModal }) {
@@ -11,60 +12,43 @@ export function ModalExercise({ statusModal }) {
   const [minute, setMinute] = useState('05')
   const [seconds, setSeconds] = useState('00')
   const [quantity, setQuantity] = useState('0')
-
+  const [edit, setEdit] = useState(false)
+  const { editExercise } = useSelector((auth) => auth.exercise)
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    const exerciseFloat = parseFloat(editExercise.time / 60)
+    const exerciseInt = parseInt(editExercise.time / 60)
+
+    if (editExercise.name) {
+      setEdit(true)
+      setTitle(editExercise.name)
+      setType(editExercise.rest ? 'rest' : 'exercise')
+      setQuantity(String(editExercise.quantity))
+      setMinute(String(exerciseInt))
+      setSeconds(String((exerciseFloat - exerciseInt) * 60))
+
+      formatTime(String((exerciseFloat - exerciseInt) * 60), setSeconds)
+      formatTime(String(exerciseInt), setMinute)
+      formatQuantity(quantity, setQuantity)
+    }
+  }, [editExercise])
+
   function create() {
-    dispatch(
-      addExercises({
-        time: parseInt(minute) * 60 + parseInt(seconds),
-        id: '8',
-        name: title,
-        rest: type === 'exercise' ? false : true,
-        quantity: parseInt(quantity)
-      })
-    )
+    if (!edit) {
+      dispatch(
+        addExercises({
+          time: parseInt(minute) * 60 + parseInt(seconds),
+          id: '8',
+          name: title,
+          rest: type === 'exercise' ? false : true,
+          quantity: parseInt(quantity)
+        })
+      )
+    }
 
+    setEdit(false)
     statusModal(false)
-  }
-
-  function formatTime() {
-    if (isNaN(parseInt(minute)) || parseInt(minute) < 0) {
-      setMinute('00')
-    }
-    if (minute.length > 2) setMinute('59')
-
-    if (isNaN(parseInt(seconds)) || parseInt(seconds) < 0) {
-      setSeconds('00')
-    }
-
-    if (parseInt(minute) > 59) {
-      setMinute('59')
-    }
-
-    if (parseInt(minute) < 10) {
-      setMinute(`0${parseInt(minute)}`)
-    }
-
-    if (seconds.length > 2) setSeconds('59')
-
-    if (parseInt(seconds) > 59) {
-      setSeconds('59')
-    }
-
-    if (parseInt(seconds) < 10) {
-      setSeconds(`0${parseInt(seconds)}`)
-    }
-  }
-
-  function formatQuantity() {
-    if (parseInt(quantity) > 99) {
-      setQuantity('99')
-    }
-
-    if (isNaN(parseInt(quantity)) || parseInt(quantity) < 0) {
-      setQuantity('0')
-    }
   }
 
   return (
@@ -75,6 +59,7 @@ export function ModalExercise({ statusModal }) {
         placeholderTextColor={theme.textMuted}
         value={title}
         onChangeText={setTitle}
+        editable={type === 'exercise' ? true : false}
         style={[
           styles.input,
           { borderColor: title ? theme.primary : theme.gray }
@@ -86,6 +71,7 @@ export function ModalExercise({ statusModal }) {
         <TouchableOpacity
           onPress={() => {
             setType('rest')
+            setTitle('Descanso')
           }}
           style={[
             styles.rest,
@@ -104,6 +90,7 @@ export function ModalExercise({ statusModal }) {
         <TouchableOpacity
           onPress={() => {
             setType('exercise')
+            setTitle('')
           }}
           style={[
             styles.exercise,
@@ -127,7 +114,7 @@ export function ModalExercise({ statusModal }) {
             <TextInput
               value={minute}
               onChangeText={setMinute}
-              onBlur={() => formatTime()}
+              onBlur={() => formatTime(minute, setMinute)}
               style={styles.inputTime}
             />
             <Text style={styles.descriptionQuantity}>minutos</Text>
@@ -136,7 +123,7 @@ export function ModalExercise({ statusModal }) {
           <View style={styles.quantity}>
             <TextInput
               value={seconds}
-              onBlur={() => formatTime()}
+              onBlur={() => formatTime(seconds, setSeconds)}
               onChangeText={setSeconds}
               style={styles.inputTime}
             />
@@ -149,7 +136,7 @@ export function ModalExercise({ statusModal }) {
               value={quantity}
               onChangeText={setQuantity}
               style={styles.inputTime}
-              onBlur={() => formatQuantity()}
+              onBlur={() => formatQuantity(quantity, setQuantity)}
             />
             <Text style={styles.descriptionQuantity}>quantidade</Text>
           </View>
@@ -165,7 +152,10 @@ export function ModalExercise({ statusModal }) {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={async () => {
-            formatTime()
+            formatTime(seconds, setSeconds)
+            formatTime(minute, setMinute)
+            formatQuantity(quantity, setQuantity)
+
             create()
           }}
           style={[
@@ -177,7 +167,7 @@ export function ModalExercise({ statusModal }) {
           ]}
         >
           <Text style={[styles.optText, { color: theme.background }]}>
-            Criar
+            {edit ? 'Editar' : 'Criar'}
           </Text>
         </TouchableOpacity>
       </View>
