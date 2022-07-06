@@ -1,13 +1,15 @@
 import { useNavigation } from '@react-navigation/native'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addTrain } from '../../store/train'
 import { theme } from '../../styles/theme'
 import { styles } from './styles'
 
 export function ModalTrain({ statusModal }) {
+  const [edit, setEdit] = useState(false)
   const [title, setTitle] = useState('')
+  const { editTrain } = useSelector((auth) => auth.train)
   const dispatch = useDispatch()
   const navigation = useNavigation()
 
@@ -20,9 +22,16 @@ export function ModalTrain({ statusModal }) {
       })
     )
 
-    navigation.navigate('Exercise')
     statusModal(false)
+    navigation.navigate('Exercise')
   }
+
+  useEffect(() => {
+    if (editTrain.id !== '0') {
+      setTitle(editTrain.name)
+      setEdit(true)
+    }
+  }, [editTrain])
 
   return (
     <View style={styles.container}>
@@ -57,10 +66,15 @@ export function ModalTrain({ statusModal }) {
           ]}
         >
           <Text style={[styles.optText, { color: theme.background }]}>
-            Criar
+            {edit ? 'Editar' : 'Criar'}
           </Text>
         </TouchableOpacity>
       </View>
+      {edit && (
+        <TouchableOpacity style={styles.trashIcon}>
+          <Ionicons name="trash-outline" size={26} color={theme.red} />
+        </TouchableOpacity>
+      )}
     </View>
   )
 }

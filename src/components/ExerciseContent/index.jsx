@@ -1,17 +1,16 @@
-import { FlatList, Text } from 'react-native'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { TrainCard } from '../TrainCard'
 import { styles } from './styles'
 import { setEditExercises } from '../../store/exercise'
-import { BoardRepository } from 'react-native-draganddrop-board'
+import { exerciseFinish, exerciseTime } from '../../utils/formatTime'
+import { useState } from 'react'
+import DraggableFlatList from 'react-native-draggable-flatlist'
 
 export function ExerciseContent({ statusModal }) {
-  const time = '1:20:00h'
-  const xp = 120
-  const finish = '4:00am'
-
-  const { exercises } = useSelector((auth) => auth.exercise)
+  const [dragging, setDragging] = useState(false)
+  const { exercises, currentExercise } = useSelector((auth) => auth.exercise)
+  const [data, setData] = useState(exercises)
 
   const dispatch = useDispatch()
 
@@ -31,21 +30,37 @@ export function ExerciseContent({ statusModal }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Título do treino</Text>
+      <Text style={styles.title}>{currentExercise.title}</Text>
 
       <View style={styles.textContainer}>
-        <Text style={styles.totalTime}>{time}</Text>
-        <Text style={styles.xp}>{`+${xp}xp`}</Text>
+        <Text style={styles.totalTime}>
+          {exerciseTime(currentExercise.totalTime)}
+        </Text>
+        <Text style={styles.xp}>{`+${currentExercise.xp}xp`}</Text>
       </View>
-      <Text style={styles.finish}>{`Previsão de termino: ${finish}`}</Text>
-      <FlatList
-        data={exercises}
-        renderItem={({ item }) => (
-          <TrainCard data={item} onPress={() => editExercise(item)} />
-        )}
+      <Text style={styles.finish}>{`Previsão de termino: ${exerciseFinish(
+        currentExercise.totalTime
+      )}`}</Text>
+
+      <DraggableFlatList
+        scrollEnabled={!dragging}
         showsVerticalScrollIndicator={false}
+        data={data}
+        onDragEnd={({ data }) => {
+          setDragging(false)
+          setData(data)
+        }}
+        onDragBegin={() => setDragging(true)}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={{ paddingBottom: 370 }}
+        renderItem={({ item, drag, isActive }) => (
+          <TrainCard
+            data={item}
+            onPress={() => editExercise(item)}
+            onLongPress={drag}
+            disabled={isActive}
+          />
+        )}
+        contentContainerStyle={{ paddingBottom: 500 }}
       />
     </View>
   )

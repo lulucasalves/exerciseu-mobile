@@ -10,5 +10,6 @@ export const theme = {
   gray: 'rgba(0,0,0,0.2)',
   statusBar: 'rgba(255,255,255,0.4)',
   gray8: 'rgba(0,0,0,0.8)',
-  medal: '#FF9C47'
+  medal: '#FF9C47',
+  red: 'red'
 }

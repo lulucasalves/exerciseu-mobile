@@ -7,7 +7,8 @@ export const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20
+    padding: 20,
+    position: 'relative'
   },
   option: {
     width: '47%',
@@ -116,5 +117,10 @@ export const styles = StyleSheet.create({
     color: theme.muted,
     position: 'absolute',
     bottom: -25
+  },
+  trashIcon: {
+    position: 'absolute',
+    top: 5,
+    right: 20
   }
 })

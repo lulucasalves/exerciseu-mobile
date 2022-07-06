@@ -10,7 +10,8 @@ export const styles = StyleSheet.create({
     padding: 25,
     borderRadius: 10,
     flexDirection: 'row',
-    marginTop: 15
+    marginTop: 15,
+    backgroundColor: theme.background
   },
   train: {
     fontFamily: 'WorkSans_500Medium',

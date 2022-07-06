@@ -45,5 +45,10 @@ export const styles = StyleSheet.create({
     fontFamily: 'WorkSans_500Medium',
     textAlign: 'left',
     width: '100%'
+  },
+  trashIcon: {
+    position: 'absolute',
+    top: 5,
+    right: 20
   }
 })

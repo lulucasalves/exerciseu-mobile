@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { Ionicons } from '@expo/vector-icons'
+import { useMemo, useState } from 'react'
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { addExercises, setEditExercises } from '../../store/exercise'
+import { addExercises } from '../../store/exercise'
 import { theme } from '../../styles/theme'
 import { formatQuantity, formatTime } from '../../utils/formatTime'
 import { styles } from './styles'
@@ -16,11 +17,11 @@ export function ModalExercise({ statusModal }) {
   const { editExercise } = useSelector((auth) => auth.exercise)
   const dispatch = useDispatch()
 
-  useEffect(() => {
+  useMemo(() => {
     const exerciseFloat = parseFloat(editExercise.time / 60)
     const exerciseInt = parseInt(editExercise.time / 60)
 
-    if (editExercise.name) {
+    if (editExercise.id !== '0') {
       setEdit(true)
       setTitle(editExercise.name)
       setType(editExercise.rest ? 'rest' : 'exercise')
@@ -171,6 +172,11 @@ export function ModalExercise({ statusModal }) {
           </Text>
         </TouchableOpacity>
       </View>
+      {edit && (
+        <TouchableOpacity style={styles.trashIcon}>
+          <Ionicons name="trash-outline" size={26} color={theme.red} />
+        </TouchableOpacity>
+      )}
     </View>
   )
 }

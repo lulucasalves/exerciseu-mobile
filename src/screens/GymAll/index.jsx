@@ -9,9 +9,14 @@ import { styles } from './styles'
 import { useState } from 'react'
 import { ModalView } from '../../components/ModalView'
 import { ModalTrain } from '../../components/ModalTrain'
+import { GymEditHeader } from '../../components/GymEditHeader'
+import { useSelector } from 'react-redux'
 
 export function GymAll() {
   const [modal, setModal] = useState(false)
+  const [editMode, setEditMode] = useState(false)
+  const [data, setData] = useState(trains)
+  const { trains } = useSelector((auth) => auth.train)
 
   function setModalState(bool) {
     setModal(bool)
@@ -19,8 +24,21 @@ export function GymAll() {
 
   return (
     <Background>
-      <GymHeader page="all" />
-      <GymAllContent />
+      {editMode ? (
+        <GymEditHeader
+          oldData={trains}
+          setData={setData}
+          setEditMode={setEditMode}
+        />
+      ) : (
+        <GymHeader page="all" />
+      )}
+      <GymAllContent
+        data={data}
+        setData={setData}
+        setEditMode={setEditMode}
+        setModal={setModal}
+      />
       <Navigation />
 
       <ModalView height={260} visible={modal} statusModal={setModalState}>

@@ -10,8 +10,8 @@ export const styles = StyleSheet.create({
   },
   div: {
     width: '33.5%',
-    paddingTop: 40,
-    paddingBottom: 20,
+    height: 90,
+    paddingTop: 20,
     alignItems: 'center',
     justifyContent: 'center'
   },

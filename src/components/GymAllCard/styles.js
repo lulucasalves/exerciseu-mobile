@@ -11,7 +11,8 @@ export const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
     flexDirection: 'row',
-    marginTop: 15
+    marginTop: 15,
+    backgroundColor: theme.background
   },
   train: {
     fontFamily: 'WorkSans_600SemiBold',

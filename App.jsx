@@ -1,6 +1,8 @@
-import { StatusBar, LogBox } from 'react-native'
-import React from 'react'
+import { StatusBar, LogBox, View } from 'react-native'
+import React, { useCallback, useMemo, useState } from 'react'
 import { Background } from './src/components/Background'
+import * as SplashScreen from 'expo-splash-screen'
+
 import { useFonts } from 'expo-font'
 import {
   WorkSans_300Light,
@@ -9,7 +11,6 @@ import {
   WorkSans_600SemiBold,
   WorkSans_700Bold
 } from '@expo-google-fonts/work-sans'
-import AppLoading from 'expo-app-loading'
 import { Routes } from './src/routes'
 import { theme } from './src/styles/theme'
 import { Provider } from 'react-redux'
@@ -20,6 +21,8 @@ LogBox.ignoreLogs([
 ])
 
 export default function App() {
+  const [appIsReady, setAppIsReady] = useState(false)
+
   const [fontsLoaded] = useFonts({
     WorkSans_300Light,
     WorkSans_400Regular,
@@ -28,20 +31,34 @@ export default function App() {
     WorkSans_700Bold
   })
 
-  if (!fontsLoaded) {
-    return <AppLoading />
+  useMemo(() => {
+    if (fontsLoaded) {
+      setAppIsReady(true)
+    }
+  }, [fontsLoaded])
+
+  const onLayoutRootView = useCallback(async () => {
+    if (appIsReady) {
+      await SplashScreen.hideAsync()
+    }
+  }, [appIsReady])
+
+  if (!appIsReady) {
+    return null
   }
 
   return (
-    <Provider store={store}>
-      <Background>
-        <StatusBar
-          barStyle="dark-content"
-          backgroundColor={theme.statusBar}
-          translucent
-        />
-        <Routes />
-      </Background>
-    </Provider>
+    <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+      <Provider store={store}>
+        <Background>
+          <StatusBar
+            barStyle="dark-content"
+            backgroundColor={theme.statusBar}
+            translucent
+          />
+          <Routes />
+        </Background>
+      </Provider>
+    </View>
   )
 }

@@ -1,37 +1,54 @@
 import { useNavigation } from '@react-navigation/native'
-import { useEffect, useState } from 'react'
-import { FlatList } from 'react-native'
+import { useState } from 'react'
 import { View } from 'react-native'
-import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { GymAllCard } from '../GymAllCard'
+import { setCurrentTrain } from '../../store/exercise'
 import { styles } from './styles'
+import DraggableFlatList from 'react-native-draggable-flatlist'
 
-export function GymAllContent() {
+export function GymAllContent({ setEditMode, setModal, data, setData }) {
+  const [dragging, setDragging] = useState(false)
   const navigation = useNavigation()
-  const { trains } = useSelector((auth) => auth.train)
-  const [train, setTrain] = useState()
+  const dispatch = useDispatch()
 
-  useEffect(() => {
-    setTrain(trains)
-  }, [trains])
-
-  function handleSelect() {
+  function handleSelect(data) {
+    dispatch(
+      setCurrentTrain({
+        title: data.name,
+        totalTime: data.finish,
+        xp: data.xp,
+        id: data.id
+      })
+    )
     navigation.navigate('Exercise')
   }
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={train}
-        renderItem={({ item }) => (
+      <DraggableFlatList
+        scrollEnabled={!dragging}
+        showsVerticalScrollIndicator={false}
+        data={data}
+        onDragEnd={({ data }) => {
+          setDragging(false)
+          setData(data)
+        }}
+        onDragBegin={() => {
+          setDragging(true)
+          setEditMode(true)
+        }}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item, drag, isActive }) => (
           <GymAllCard
             data={item}
-            onPress={() => handleSelect()}
+            onPress={() => handleSelect(item)}
             key={item.key}
+            onLongPress={drag}
+            disabled={isActive}
+            setModal={setModal}
           />
         )}
-        showsVerticalScrollIndicator={false}
-        keyExtractor={(item) => item.id}
         contentContainerStyle={{ paddingBottom: 170, paddingTop: 5 }}
       />
     </View>
