@@ -101,7 +101,7 @@ export const styles = StyleSheet.create({
     fontFamily: 'WorkSans_400Regular',
     backgroundColor: 'transparent',
     fontSize: 36,
-    height: 80,
+    height: 85,
     borderColor: theme.muted,
     width: 70,
     textAlign: 'center'
@@ -122,5 +122,10 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     top: 5,
     right: 20
+  },
+  copyIcon: {
+    position: 'absolute',
+    top: 5,
+    left: 20
   }
 })

@@ -4,6 +4,7 @@ import { theme } from '../../styles/theme'
 export const styles = StyleSheet.create({
   container: {
     paddingTop: 40,
+    height: 85,
     paddingLeft: 20,
     paddingRight: 20,
     paddingBottom: 10,
@@ -18,7 +19,8 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     marginLeft: 15,
     color: theme.background,
-    marginLeft: 5
+    marginLeft: 5,
+    color: '#fff'
   },
   save: {
     flexDirection: 'row'

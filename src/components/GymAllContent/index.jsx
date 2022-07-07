@@ -9,6 +9,7 @@ import DraggableFlatList from 'react-native-draggable-flatlist'
 
 export function GymAllContent({ setEditMode, setModal, data, setData }) {
   const [dragging, setDragging] = useState(false)
+
   const navigation = useNavigation()
   const dispatch = useDispatch()
 
@@ -49,7 +50,7 @@ export function GymAllContent({ setEditMode, setModal, data, setData }) {
             setModal={setModal}
           />
         )}
-        contentContainerStyle={{ paddingBottom: 170, paddingTop: 5 }}
+        contentContainerStyle={{ paddingBottom: 250, paddingTop: 5 }}
       />
     </View>
   )

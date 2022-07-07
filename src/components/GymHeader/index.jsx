@@ -27,7 +27,7 @@ export function GymHeader({ page }) {
           style={[
             styles.text,
             {
-              color: page === 'all' ? theme.primary : theme.background
+              color: page === 'all' ? theme.primary : '#fff'
             }
           ]}
         >
@@ -49,7 +49,7 @@ export function GymHeader({ page }) {
           style={[
             styles.text,
             {
-              color: page === 'recent' ? theme.primary : theme.background
+              color: page === 'recent' ? theme.primary : '#fff'
             }
           ]}
         >
@@ -71,7 +71,7 @@ export function GymHeader({ page }) {
           style={[
             styles.text,
             {
-              color: page === 'explore' ? theme.primary : theme.background
+              color: page === 'explore' ? theme.primary : '#fff'
             }
           ]}
         >

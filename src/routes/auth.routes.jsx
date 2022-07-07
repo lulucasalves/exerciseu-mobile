@@ -11,6 +11,7 @@ import { Configuration } from '../screens/Configuration'
 import { Profile } from '../screens/Profile'
 import { ChampionShip } from '../screens/Championship'
 import { Exercise } from '../screens/Exercise'
+import { SelectTrain } from '../screens/SelectTrain'
 const { Navigator, Screen } = createStackNavigator()
 
 export function AuthRoutes() {
@@ -31,6 +32,7 @@ export function AuthRoutes() {
       <Screen name="Configuration" component={Configuration} />
       <Screen name="Profile" component={Profile} />
       <Screen name="Exercise" component={Exercise} />
+      <Screen name="Select" component={SelectTrain} />
     </Navigator>
   )
 }

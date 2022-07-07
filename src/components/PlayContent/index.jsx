@@ -1,14 +1,11 @@
 import { FlatList, Text } from 'react-native'
 import { View } from 'react-native'
 import { useSelector } from 'react-redux'
+import { exerciseFinish, exerciseTime } from '../../utils/formatTime'
 import { TrainCard } from '../TrainCard'
 import { styles } from './styles'
 
-export function PlayContent() {
-  const time = '1:20:00h'
-  const xp = 120
-  const finish = '4:00am'
-
+export function PlayContent({ currentPlay }) {
   const { exercises } = useSelector((auth) => auth.exercise)
 
   function handleSelect(val) {
@@ -18,10 +15,14 @@ export function PlayContent() {
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-        <Text style={styles.totalTime}>{time}</Text>
-        <Text style={styles.xp}>{`+${xp}xp`}</Text>
+        <Text style={styles.totalTime}>
+          {exerciseTime(currentPlay.totalTime)}
+        </Text>
+        <Text style={styles.xp}>{`+${currentPlay.xp}xp`}</Text>
       </View>
-      <Text style={styles.finish}>{`Previsão de termino: ${finish}`}</Text>
+      <Text style={styles.finish}>{`Previsão de termino: ${exerciseFinish(
+        currentPlay.totalTime
+      )}`}</Text>
       <FlatList
         data={exercises}
         renderItem={({ item }) => (
@@ -29,7 +30,7 @@ export function PlayContent() {
         )}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={{ paddingBottom: 270 }}
+        contentContainerStyle={{ paddingBottom: 350 }}
       />
     </View>
   )

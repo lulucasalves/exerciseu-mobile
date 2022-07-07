@@ -10,13 +10,15 @@ import { useState } from 'react'
 import { ModalView } from '../../components/ModalView'
 import { ModalTrain } from '../../components/ModalTrain'
 import { GymEditHeader } from '../../components/GymEditHeader'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setEditTrain } from '../../store/train'
 
 export function GymAll() {
   const [modal, setModal] = useState(false)
   const [editMode, setEditMode] = useState(false)
-  const [data, setData] = useState(trains)
   const { trains } = useSelector((auth) => auth.train)
+  const [data, setData] = useState(trains)
+  const dispatch = useDispatch()
 
   function setModalState(bool) {
     setModal(bool)
@@ -41,11 +43,25 @@ export function GymAll() {
       />
       <Navigation />
 
-      <ModalView height={260} visible={modal} statusModal={setModalState}>
+      <ModalView height={300} visible={modal} statusModal={setModalState}>
         <ModalTrain statusModal={setModalState} />
       </ModalView>
-      <TouchableOpacity onPress={() => setModal(true)} style={styles.playFloat}>
-        <Ionicons name="add-sharp" size={30} color={theme.background} />
+      <TouchableOpacity
+        onPress={() => {
+          setModal(true)
+          dispatch(
+            setEditTrain({
+              time: 0,
+              id: '0',
+              name: '',
+              rest: false,
+              quantity: 0
+            })
+          )
+        }}
+        style={styles.playFloat}
+      >
+        <Ionicons name="add-sharp" size={30} color="#fff" />
       </TouchableOpacity>
     </Background>
   )

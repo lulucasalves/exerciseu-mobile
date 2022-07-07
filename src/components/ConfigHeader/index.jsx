@@ -28,7 +28,7 @@ export function ConfigHeader({ page }) {
           style={[
             styles.text,
             {
-              color: page === 'profile' ? theme.primary : theme.background
+              color: page === 'profile' ? theme.primary : '#fff'
             }
           ]}
         >
@@ -50,7 +50,7 @@ export function ConfigHeader({ page }) {
           style={[
             styles.text,
             {
-              color: page === 'config' ? theme.primary : theme.background
+              color: page === 'config' ? theme.primary : '#fff'
             }
           ]}
         >

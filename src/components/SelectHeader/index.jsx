@@ -4,21 +4,13 @@ import { Ionicons } from '@expo/vector-icons'
 import { theme } from '../../styles/theme'
 import { useNavigation } from '@react-navigation/native'
 
-export function ExerciseHeader() {
+export function SelectHeader() {
   const navigation = useNavigation()
-
-  function save() {
-    navigation.navigate('GymAll')
-  }
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate('GymAll')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Play')}>
         <Ionicons name="arrow-undo" size={30} color="#fff" />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => save()} style={styles.save}>
-        <Ionicons name="add" size={25} color="#fff" />
-        <Text style={styles.text}>Salvar</Text>
       </TouchableOpacity>
     </View>
   )

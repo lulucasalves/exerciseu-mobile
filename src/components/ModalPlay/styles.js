@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
   },
   optText: {
     fontSize: 18,
-    fontFamily: 'WorkSans_500Medium'
+    fontFamily: 'WorkSans_500Medium',
+    color: theme.text
   }
 })

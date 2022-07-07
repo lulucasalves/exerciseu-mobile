@@ -3,10 +3,9 @@ import { theme } from '../../styles/theme'
 
 export const styles = StyleSheet.create({
   container: {
-    paddingTop: 40,
+    paddingTop: 35,
     paddingLeft: 20,
     paddingRight: 20,
-
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -34,9 +33,9 @@ export const styles = StyleSheet.create({
   level: {
     fontFamily: 'WorkSans_400Regular',
     fontSize: 16,
-    marginRight: 20
+    marginRight: 20,
+    color: theme.text
   },
-
   barDiv: {
     width: 100,
     height: 5,
@@ -67,6 +66,7 @@ export const styles = StyleSheet.create({
   offensiveText: {
     fontFamily: 'WorkSans_500Medium',
     marginLeft: 5,
-    fontSize: 18
+    fontSize: 18,
+    color: theme.text
   }
 })

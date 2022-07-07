@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     backgroundColor: theme.primary,
-    shadowColor: theme.gray8,
+    shadowColor: 'rgba(0,0,0,0.8)',
     shadowOffset: {
       width: 0,
       height: 2
@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
   },
   btnText: {
     fontSize: 18,
-    color: theme.background,
+    color: '#fff',
     fontFamily: 'WorkSans_500Medium',
     marginLeft: 15,
     marginTop: 2

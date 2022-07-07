@@ -4,8 +4,8 @@ import { theme } from '../../styles/theme'
 export const styles = StyleSheet.create({
   container: {
     paddingTop: 40,
-    height: 85,
     paddingLeft: 20,
+    height: 85,
     paddingRight: 20,
     paddingBottom: 10,
     backgroundColor: theme.primary,
@@ -17,13 +17,11 @@ export const styles = StyleSheet.create({
   text: {
     fontFamily: 'WorkSans_500Medium',
     fontSize: 18,
-    marginLeft: 20,
+    marginLeft: 15,
     color: theme.background,
-    marginLeft: 5,
-    color: '#fff'
+    marginLeft: 5
   },
   save: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: 'row'
   }
 })

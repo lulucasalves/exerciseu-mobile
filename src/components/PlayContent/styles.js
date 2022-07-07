@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native'
 import { theme } from '../../styles/theme'
 
+
 export const styles = StyleSheet.create({
   container: {
     paddingLeft: 20,
@@ -40,7 +41,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: theme.primary,
     width: 80,
-    height: 80,
-    borderRadius: 50,
+    height: 85,
+    borderRadius: 50
   }
 })

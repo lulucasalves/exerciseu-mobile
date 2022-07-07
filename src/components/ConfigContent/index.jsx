@@ -12,7 +12,10 @@ export function ConfigContent() {
           {
             id: '1',
             name: 'Idioma',
-            icon: <Ionicons name="flag-outline" size={35} color={theme.muted} />
+            icon: (
+              <Ionicons name="flag-outline" size={35} color={theme.muted} />
+            ),
+            func: 'exit'
           },
           {
             id: '2',
@@ -23,31 +26,38 @@ export function ConfigContent() {
                 size={35}
                 color={theme.muted}
               />
-            )
+            ),
+            func: 'exit'
           },
           {
             id: '3',
             name: 'Informações pessoais',
             icon: (
               <Ionicons name="person-outline" size={35} color={theme.muted} />
-            )
+            ),
+            func: 'exit'
+          },
+          {
+            id: '8',
+            name: 'Preferências',
+            icon: <Ionicons name="cog-outline" size={35} color={theme.muted} />,
+            func: 'exit'
           },
           {
             id: '4',
             name: 'Login com digital',
-            icon: <Ionicons name="finger-print" size={35} color={theme.muted} />
-          },
-          {
-            id: '5',
-            name: 'Tema',
             icon: (
-              <Ionicons name="sunny-outline" size={35} color={theme.muted} />
-            )
+              <Ionicons name="finger-print" size={35} color={theme.muted} />
+            ),
+            func: 'exit'
           },
           {
             id: '6',
             name: 'Sair',
-            icon: <Ionicons name="exit-outline" size={35} color={theme.muted} />
+            icon: (
+              <Ionicons name="exit-outline" size={35} color={theme.muted} />
+            ),
+            func: 'exit'
           },
           {
             id: '7',
@@ -58,7 +68,8 @@ export function ConfigContent() {
                 size={35}
                 color={theme.muted}
               />
-            )
+            ),
+            func: 'exit'
           }
         ]}
         renderItem={({ item }) => <ConfigCard data={item} />}

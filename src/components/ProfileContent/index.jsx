@@ -2,13 +2,14 @@ import { Image, Text, View } from 'react-native'
 import { styles } from './styles'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { theme } from '../../styles/theme'
+import { exerciseTime } from '../../utils/formatTime'
 
 export function ProfileContent() {
   const username = 'Lucas Alves'
   const level = 10
   const medals = 3
   const league = 'Diamante'
-  const xp = 30000
+  const time = 569
   const offensive = 30
   const howMuch = 300
   const percentage = 40
@@ -50,9 +51,9 @@ export function ProfileContent() {
         </View>
         <View style={styles.xpOffensive}>
           <View>
-            <Text style={styles.title}>XP total</Text>
+            <Text style={styles.title}>Tempo total</Text>
             <View style={styles.xp}>
-              <Text style={styles.data}>{`${xp}xp`}</Text>
+              <Text style={styles.data}>{`${exerciseTime(time)}`}</Text>
             </View>
           </View>
           <View>

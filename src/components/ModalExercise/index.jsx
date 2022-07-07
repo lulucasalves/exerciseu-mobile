@@ -57,7 +57,7 @@ export function ModalExercise({ statusModal }) {
       <Text style={styles.label}>Título</Text>
 
       <TextInput
-        placeholderTextColor={theme.textMuted}
+        placeholderTextColor={theme.muted}
         value={title}
         onChangeText={setTitle}
         editable={type === 'exercise' ? true : false}
@@ -167,15 +167,20 @@ export function ModalExercise({ statusModal }) {
             }
           ]}
         >
-          <Text style={[styles.optText, { color: theme.background }]}>
+          <Text style={[styles.optText, { color: '#fff' }]}>
             {edit ? 'Editar' : 'Criar'}
           </Text>
         </TouchableOpacity>
       </View>
       {edit && (
-        <TouchableOpacity style={styles.trashIcon}>
-          <Ionicons name="trash-outline" size={26} color={theme.red} />
-        </TouchableOpacity>
+        <>
+          <TouchableOpacity style={styles.trashIcon}>
+            <Ionicons name="trash-outline" size={26} color={theme.red} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.copyIcon}>
+            <Ionicons name="copy-outline" size={26} color={theme.muted} />
+          </TouchableOpacity>
+        </>
       )}
     </View>
   )

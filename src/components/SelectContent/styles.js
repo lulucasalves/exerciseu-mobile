@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%',
     alignItems: 'center',
-    marginTop: 5,
+    marginTop: 20,
     marginBottom: 5
   },
   finish: {
@@ -42,11 +42,5 @@ export const styles = StyleSheet.create({
     width: 80,
     height: 85,
     borderRadius: 50
-  },
-  title: {
-    fontFamily: 'WorkSans_600SemiBold',
-    fontSize: 20,
-    color: theme.primary,
-    marginTop: 15
   }
 })

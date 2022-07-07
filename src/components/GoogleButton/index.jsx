@@ -8,7 +8,7 @@ export function GoogleButton(props) {
     <TouchableHighlight
       {...props}
       style={styles.btnClickContain}
-      underlayColor={theme.secondary}
+      underlayColor={theme.primary}
     >
       <View style={styles.btnContainer}>
         <Ionicons name="logo-google" size={24} color="#fff" />

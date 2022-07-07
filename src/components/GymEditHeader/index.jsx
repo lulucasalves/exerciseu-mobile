@@ -16,10 +16,10 @@ export function GymEditHeader({ setEditMode, oldData, setData }) {
           setEditMode(false)
         }}
       >
-        <Ionicons name="arrow-undo" size={30} color={theme.background} />
+        <Ionicons name="arrow-undo" size={30} color="#fff" />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => save()} style={styles.save}>
-        <Ionicons name="pencil-outline" size={20} color={theme.background} />
+        <Ionicons name="pencil-outline" size={20} color='#fff' />
         <Text style={styles.text}>Salvar</Text>
       </TouchableOpacity>
     </View>

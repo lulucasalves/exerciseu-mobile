@@ -1,8 +1,7 @@
 import { StatusBar, LogBox, View } from 'react-native'
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Background } from './src/components/Background'
 import * as SplashScreen from 'expo-splash-screen'
-
 import { useFonts } from 'expo-font'
 import {
   WorkSans_300Light,
@@ -52,7 +51,7 @@ export default function App() {
       <Provider store={store}>
         <Background>
           <StatusBar
-            barStyle="dark-content"
+            barStyle="light-content"
             backgroundColor={theme.statusBar}
             translucent
           />

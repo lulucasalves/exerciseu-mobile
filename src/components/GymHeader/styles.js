@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   },
   div: {
     width: '33.5%',
-    height: 90,
+    height: 85,
     paddingTop: 20,
     alignItems: 'center',
     justifyContent: 'center'

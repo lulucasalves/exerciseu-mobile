@@ -26,11 +26,11 @@ export function Exercise() {
       <ExerciseContent statusModal={setModalState} />
       <Navigation />
 
-      <ModalView height={500} visible={modal} statusModal={setModalState}>
+      <ModalView height={550} visible={modal} statusModal={setModalState}>
         <ModalExercise statusModal={setModalState} />
       </ModalView>
       <TouchableOpacity style={styles.playFloat}>
-        <Ionicons name="play" size={25} color={theme.background} />
+        <Ionicons name="play" size={25} color="#fff" />
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
@@ -47,7 +47,7 @@ export function Exercise() {
         }}
         style={styles.addFloat}
       >
-        <Ionicons name="add" size={30} color={theme.background} />
+        <Ionicons name="add" size={30} color="#fff" />
       </TouchableOpacity>
     </Background>
   )

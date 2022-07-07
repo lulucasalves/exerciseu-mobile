@@ -50,5 +50,10 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     top: 5,
     right: 20
+  },
+  copyIcon: {
+    position: 'absolute',
+    top: 5,
+    left: 20
   }
 })
