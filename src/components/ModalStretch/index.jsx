@@ -26,8 +26,10 @@ export function ModalStretch({ statusModal }) {
     }
   }, [config])
 
-  function create(minute, seconds) {
-    dispatch(preferencesStretch(parseInt(minute) * 60 + seconds))
+  async function create(minute, seconds) {
+    const total = parseInt(minute) * 60 + parseInt(seconds)
+    dispatch(preferencesStretch(total))
+    await AsyncStorage.setItem('stretch', String(total))
 
     statusModal(false)
   }

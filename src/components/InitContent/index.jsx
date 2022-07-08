@@ -15,16 +15,32 @@ import { styles } from './styles'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export function InitContent({ currentPlay, statusModal, preparationModal }) {
-  const [audio, setAudio] = useState(1)
-  const [vibrate, setVibrate] = useState(1)
-  const [spotify, setSpotify] = useState(1)
-  const [jump, setJump] = useState(1)
+  const [audio, setAudio] = useState(true)
+  const [vibrate, setVibrate] = useState(true)
+  const [spotify, setSpotify] = useState(true)
+  const [jump, setJump] = useState(true)
 
   const dispatch = useDispatch()
   const navigation = useNavigation()
 
   function booleanAlternate(val, setVal) {
     setVal(!val)
+  }
+
+  function translate(data) {
+    if (data === '0') {
+      return false
+    }
+
+    if (data === '1') {
+      return true
+    }
+
+    if (!data) {
+      return '0'
+    }
+
+    return '1'
   }
 
   useMemo(() => {
@@ -36,22 +52,22 @@ export function InitContent({ currentPlay, statusModal, preparationModal }) {
       const storagePreparation = await AsyncStorage.getItem('preparation')
       const storageStretch = await AsyncStorage.getItem('stretch')
 
-      // setAudio(storageAudio || 1)
-      // setVibrate(storageVibrate || 1)
-      // setSpotify(storageSpotify || 1)
-      // setJump(storageJump || 1)
+      setAudio(translate(storageAudio))
+      setVibrate(translate(storageVibrate))
+      setSpotify(translate(storageSpotify))
+      setJump(translate(storageJump))
 
-      // if (storagePreparation) {
-      //   dispatch(preferencesPreparation(storagePreparation || 10))
-      // }
+      if (storagePreparation) {
+        dispatch(preferencesPreparation(parseInt(storagePreparation) || 10))
+      }
 
-      // if (storageStretch) {
-      //   dispatch(preferencesStretch(storageStretch || 0))
-      // }
+      if (storageStretch) {
+        dispatch(preferencesStretch(parseInt(storageStretch) || 0))
+      }
     })()
   }, [])
 
-  function save() {
+  async function save() {
     dispatch(
       setPlayConfig({
         audio,
@@ -60,6 +76,16 @@ export function InitContent({ currentPlay, statusModal, preparationModal }) {
         jump
       })
     )
+
+    await AsyncStorage.removeItem('audio')
+    await AsyncStorage.removeItem('vibrate')
+    await AsyncStorage.removeItem('jump')
+    await AsyncStorage.removeItem('spotify')
+
+    await AsyncStorage.setItem('audio', translate(audio))
+    await AsyncStorage.setItem('vibrate', translate(vibrate))
+    await AsyncStorage.setItem('jump', translate(jump))
+    await AsyncStorage.setItem('spotify', translate(spotify))
 
     navigation.navigate('Home')
   }

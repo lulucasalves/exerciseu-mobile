@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useMemo, useState } from 'react'
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
@@ -21,8 +22,10 @@ export function ModalPreparation({ statusModal }) {
     }
   }, [config])
 
-  function create(seconds) {
+  async function create(seconds) {
     dispatch(preferencesPreparation(seconds))
+
+    await AsyncStorage.setItem('preparation', String(seconds))
 
     statusModal(false)
   }

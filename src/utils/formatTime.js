@@ -1,19 +1,23 @@
 export function formatTime(value, setValue) {
-  if (isNaN(parseInt(value))) {
+  const intVal = parseInt(value)
+  if (isNaN(intVal)) {
     setValue('00')
     return 0
   } else if (value.length > 2) {
     setValue('59')
     return 59
-  } else if (parseInt(value) < 0) {
+  } else if (intVal < 0) {
     setValue('00')
     return 0
-  } else if (parseInt(value) > 59) {
+  } else if (intVal > 59) {
     setValue('59')
     return 59
-  } else if (parseInt(value) < 10) {
+  } else if (intVal < 10) {
     setValue(`0${parseInt(value)}`)
     return parseInt(value)
+  } else {
+    setValue(String(intVal))
+    return intVal
   }
 }
 
