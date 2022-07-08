@@ -9,13 +9,15 @@ import { PlayContent } from '../../components/PlayContent'
 import { PlayHeader } from '../../components/PlayHeader'
 import { TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import { theme } from '../../styles/theme'
 import { useSelector } from 'react-redux'
+import { useNavigation } from '@react-navigation/native'
+import { useMemo } from 'react'
 
 export function Play() {
   const [modal, setModal] = useState(false)
   const [modalCreate, setModalCreate] = useState(false)
   const { currentPlay } = useSelector((auth) => auth.play)
+  const navigation = useNavigation()
 
   function setModalState(bool) {
     setModal(bool)
@@ -45,7 +47,10 @@ export function Play() {
       >
         <ModalTrain statusModal={setModalCreateState} />
       </ModalView>
-      <TouchableOpacity style={styles.playFloat}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('InitTrain')}
+        style={styles.playFloat}
+      >
         <Ionicons name="play" size={25} color="#fff" />
       </TouchableOpacity>
     </Background>

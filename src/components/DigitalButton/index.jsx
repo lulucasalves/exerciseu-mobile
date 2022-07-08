@@ -5,14 +5,14 @@ import { theme } from '../../styles/theme'
 import * as LocalAuthentication from 'expo-local-authentication'
 import * as Device from 'expo-device'
 import { useNavigation } from '@react-navigation/native'
-import { useEffect, useState } from 'react'
+import { useMemo, useState } from 'react'
 
 export function DigitalButton(props) {
   const navigation = useNavigation()
 
   const [digitalLogin, setDigitalLogin] = useState(false)
 
-  useEffect(() => {
+  useMemo(() => {
     ;(async () => {
       const compatible = await LocalAuthentication.hasHardwareAsync()
       const hasPassword = await LocalAuthentication.isEnrolledAsync()
@@ -30,7 +30,7 @@ export function DigitalButton(props) {
     if (hasPassword && compatible) {
       const biometricAuth = await LocalAuthentication.authenticateAsync()
 
-      if (biometricAuth) {
+      if (biometricAuth.success) {
         const id = Device.osBuildFingerprint
         const name = Device.deviceName
         const product = Device.modelName
@@ -42,7 +42,6 @@ export function DigitalButton(props) {
           .replace(/:/g, 'z')
           .toLowerCase()
 
-        console.log(registerRendered)
         navigation.navigate('Home')
       }
     }

@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
-import { useEffect, useState } from 'react'
+import { useState, useMemo } from 'react'
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { addTrain } from '../../store/train'
@@ -27,7 +27,7 @@ export function ModalTrain({ statusModal }) {
     navigation.navigate('Exercise')
   }
 
-  useEffect(() => {
+  useMemo(() => {
     if (editTrain.id !== '0') {
       setTitle(editTrain.name)
       setEdit(true)

@@ -1,5 +1,5 @@
 import { StatusBar, LogBox, View } from 'react-native'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { Background } from './src/components/Background'
 import * as SplashScreen from 'expo-splash-screen'
 import { useFonts } from 'expo-font'

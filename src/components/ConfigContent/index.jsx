@@ -15,7 +15,7 @@ export function ConfigContent() {
             icon: (
               <Ionicons name="flag-outline" size={35} color={theme.muted} />
             ),
-            func: 'exit'
+            func: ''
           },
           {
             id: '2',
@@ -27,7 +27,7 @@ export function ConfigContent() {
                 color={theme.muted}
               />
             ),
-            func: 'exit'
+            func: ''
           },
           {
             id: '3',
@@ -35,13 +35,13 @@ export function ConfigContent() {
             icon: (
               <Ionicons name="person-outline" size={35} color={theme.muted} />
             ),
-            func: 'exit'
+            func: ''
           },
           {
             id: '8',
             name: 'Preferências',
             icon: <Ionicons name="cog-outline" size={35} color={theme.muted} />,
-            func: 'exit'
+            func: ''
           },
           {
             id: '4',
@@ -49,7 +49,7 @@ export function ConfigContent() {
             icon: (
               <Ionicons name="finger-print" size={35} color={theme.muted} />
             ),
-            func: 'exit'
+            func: ''
           },
           {
             id: '6',
@@ -69,7 +69,7 @@ export function ConfigContent() {
                 color={theme.muted}
               />
             ),
-            func: 'exit'
+            func: ''
           }
         ]}
         renderItem={({ item }) => <ConfigCard data={item} />}

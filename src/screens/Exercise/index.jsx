@@ -6,18 +6,34 @@ import { ModalView } from '../../components/ModalView'
 import { Navigation } from '../../components/Navigation'
 import { TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import { theme } from '../../styles/theme'
 import { ExerciseHeader } from '../../components/ExerciseHeader'
 import { ExerciseContent } from '../../components/ExerciseContent'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setEditExercises } from '../../store/exercise'
+import { useNavigation } from '@react-navigation/native'
+import { setCurrentPlay } from '../../store/play'
 
 export function Exercise() {
   const [modal, setModal] = useState(false)
   const dispatch = useDispatch()
+  const navigation = useNavigation()
+  const { currentExercise } = useSelector((auth) => auth.exercise)
 
   function setModalState(bool) {
     setModal(bool)
+  }
+
+  function initTrain(data) {
+    dispatch(
+      setCurrentPlay({
+        title: data.title,
+        totalTime: data.totalTime,
+        xp: data.xp,
+        id: data.id
+      })
+    )
+
+    navigation.navigate('InitTrain')
   }
 
   return (
@@ -29,7 +45,10 @@ export function Exercise() {
       <ModalView height={550} visible={modal} statusModal={setModalState}>
         <ModalExercise statusModal={setModalState} />
       </ModalView>
-      <TouchableOpacity style={styles.playFloat}>
+      <TouchableOpacity
+        onPress={() => initTrain(currentExercise)}
+        style={styles.playFloat}
+      >
         <Ionicons name="play" size={25} color="#fff" />
       </TouchableOpacity>
       <TouchableOpacity

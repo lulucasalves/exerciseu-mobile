@@ -8,9 +8,7 @@ import { styles } from './styles'
 export function PlayContent({ currentPlay }) {
   const { exercises } = useSelector((auth) => auth.exercise)
 
-  function handleSelect(val) {
-    console.log(val)
-  }
+  function handleSelect(val) {}
 
   return (
     <View style={styles.container}>

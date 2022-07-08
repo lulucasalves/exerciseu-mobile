@@ -3,9 +3,14 @@ import { styles } from './styles'
 import { BarChart } from 'react-native-gifted-charts'
 import { theme } from '../../styles/theme'
 import { DashboardCard } from '../DashboardCard'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigation } from '@react-navigation/native'
+import { setCurrentPlay } from '../../store/play'
 
 export function DashboardContent() {
+  const dispatch = useDispatch()
+  const navigation = useNavigation()
+
   const data = [
     { value: 3, label: 'S' },
     { value: 2.5, label: 'T' },
@@ -17,6 +22,19 @@ export function DashboardContent() {
   ]
 
   const { trains } = useSelector((auth) => auth.train)
+
+  function handleSelect(data) {
+    dispatch(
+      setCurrentPlay({
+        title: data.name,
+        totalTime: data.finish,
+        xp: data.xp,
+        id: data.id
+      })
+    )
+
+    navigation.navigate('InitTrain')
+  }
 
   return (
     <View style={styles.container}>
@@ -37,7 +55,9 @@ export function DashboardContent() {
       <Text style={styles.training}>Últimos treinos</Text>
       <FlatList
         data={trains.slice(0, 3)}
-        renderItem={({ item }) => <DashboardCard data={item} />}
+        renderItem={({ item }) => (
+          <DashboardCard onPress={() => handleSelect(item)} data={item} />
+        )}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}
         contentContainerStyle={{ paddingBottom: 270 }}
