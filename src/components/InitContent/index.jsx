@@ -28,6 +28,16 @@ export function InitContent({ currentPlay, statusModal, preparationModal }) {
   }
 
   function translate(data) {
+    if (!data) {
+      return '0'
+    }
+
+    if (data) {
+      return '1'
+    }
+  }
+
+  function translateVal(data) {
     if (data === '0') {
       return false
     }
@@ -35,12 +45,6 @@ export function InitContent({ currentPlay, statusModal, preparationModal }) {
     if (data === '1') {
       return true
     }
-
-    if (!data) {
-      return '0'
-    }
-
-    return '1'
   }
 
   useMemo(() => {
@@ -52,10 +56,10 @@ export function InitContent({ currentPlay, statusModal, preparationModal }) {
       const storagePreparation = await AsyncStorage.getItem('preparation')
       const storageStretch = await AsyncStorage.getItem('stretch')
 
-      setAudio(translate(storageAudio))
-      setVibrate(translate(storageVibrate))
-      setSpotify(translate(storageSpotify))
-      setJump(translate(storageJump))
+      setAudio(translateVal(storageAudio))
+      setVibrate(translateVal(storageVibrate))
+      setSpotify(translateVal(storageSpotify))
+      setJump(translateVal(storageJump))
 
       if (storagePreparation) {
         dispatch(preferencesPreparation(parseInt(storagePreparation) || 10))
@@ -87,7 +91,7 @@ export function InitContent({ currentPlay, statusModal, preparationModal }) {
     await AsyncStorage.setItem('jump', translate(jump))
     await AsyncStorage.setItem('spotify', translate(spotify))
 
-    navigation.navigate('Home')
+    navigation.navigate('Train')
   }
 
   return (

@@ -8,7 +8,7 @@ export function Profile() {
     <Background>
       <ConfigHeader page="profile" />
       <ProfileContent />
-      <Navigation />
+      <Navigation section="config" />
     </Background>
   )
 }

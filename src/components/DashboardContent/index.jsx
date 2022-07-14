@@ -12,13 +12,13 @@ export function DashboardContent() {
   const navigation = useNavigation()
 
   const data = [
-    { value: 3, label: 'S' },
-    { value: 2.5, label: 'T' },
-    { value: 1.5, label: 'Q' },
-    { value: 2, label: 'Q' },
-    { value: 1.8, label: 'S' },
-    { value: 1.2, label: 'S' },
-    { value: 3, label: 'D' }
+    { value: 3, label: 'S', labelTextStyle: { color: theme.text } },
+    { value: 2.5, label: 'T', labelTextStyle: { color: theme.text } },
+    { value: 1.5, label: 'Q', labelTextStyle: { color: theme.text } },
+    { value: 2, label: 'Q', labelTextStyle: { color: theme.text } },
+    { value: 1.8, label: 'S', labelTextStyle: { color: theme.text } },
+    { value: 1.2, label: 'S', labelTextStyle: { color: theme.text } },
+    { value: 3, label: 'D', labelTextStyle: { color: theme.text } }
   ]
 
   const { trains } = useSelector((auth) => auth.train)

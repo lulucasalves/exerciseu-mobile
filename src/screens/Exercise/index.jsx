@@ -40,7 +40,7 @@ export function Exercise() {
     <Background>
       <ExerciseHeader />
       <ExerciseContent statusModal={setModalState} />
-      <Navigation />
+      <Navigation section="gym" />
 
       <ModalView height={550} visible={modal} statusModal={setModalState}>
         <ModalExercise statusModal={setModalState} />

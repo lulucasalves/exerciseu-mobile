@@ -40,7 +40,7 @@ export function GymAll() {
         setEditMode={setEditMode}
         setModal={setModal}
       />
-      <Navigation />
+      <Navigation section="gym" />
 
       <ModalView height={300} visible={modal} statusModal={setModalState}>
         <ModalTrain statusModal={setModalState} />

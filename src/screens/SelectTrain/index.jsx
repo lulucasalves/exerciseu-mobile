@@ -8,7 +8,7 @@ export function SelectTrain() {
     <Background>
       <SelectHeader />
       <SelectContent />
-      <Navigation />
+      <Navigation section="play" />
     </Background>
   )
 }

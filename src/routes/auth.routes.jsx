@@ -13,6 +13,7 @@ import { ChampionShip } from '../screens/Championship'
 import { Exercise } from '../screens/Exercise'
 import { SelectTrain } from '../screens/SelectTrain'
 import { InitTrain } from '../screens/InitTrain'
+import { Train } from '../screens/Train'
 const { Navigator, Screen } = createStackNavigator()
 
 export function AuthRoutes() {
@@ -35,6 +36,7 @@ export function AuthRoutes() {
       <Screen name="Exercise" component={Exercise} />
       <Screen name="Select" component={SelectTrain} />
       <Screen name="InitTrain" component={InitTrain} />
+      <Screen name="Train" component={Train} />
     </Navigator>
   )
 }

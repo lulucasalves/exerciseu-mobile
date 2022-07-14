@@ -4,7 +4,7 @@ import { Navigation } from '../../components/Navigation'
 export function ChampionShip() {
   return (
     <Background>
-      <Navigation />
+      <Navigation section="championship" />
     </Background>
   )
 }

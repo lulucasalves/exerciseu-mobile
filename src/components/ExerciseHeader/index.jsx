@@ -1,7 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import { styles } from './styles'
 import { Ionicons } from '@expo/vector-icons'
-import { theme } from '../../styles/theme'
 import { useNavigation } from '@react-navigation/native'
 
 export function ExerciseHeader() {

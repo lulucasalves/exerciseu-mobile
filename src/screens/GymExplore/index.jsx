@@ -8,7 +8,7 @@ export function GymExplore() {
     <Background>
       <GymHeader page="explore" />
       <GymExploreContent />
-      <Navigation />
+      <Navigation section="gym" />
     </Background>
   )
 }

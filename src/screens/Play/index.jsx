@@ -31,7 +31,7 @@ export function Play() {
     <Background>
       <PlayHeader currentPlay={currentPlay} statusModal={setModalState} />
       <PlayContent currentPlay={currentPlay} />
-      <Navigation />
+      <Navigation section="play" />
 
       <ModalView height={220} visible={modal} statusModal={setModalState}>
         <ModalPlay

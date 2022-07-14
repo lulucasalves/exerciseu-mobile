@@ -30,7 +30,7 @@ export function InitTrain() {
         statusModal={setModalState}
         preparationModal={setModalStateP}
       />
-      <Navigation />
+      <Navigation section="play" />
 
       <ModalView height={300} visible={modal} statusModal={setModalState}>
         <ModalStretch statusModal={setModalState} />
