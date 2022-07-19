@@ -65,3 +65,18 @@ export function exerciseFinish(time) {
     totalMinutes < 10 ? '0' : ''
   }${totalMinutes}${totalHours > 12 ? 'pm' : 'am'}`
 }
+
+export function getRemaining(time) {
+  const formatNumber = (number) => (number < 10 ? `0${number}` : number)
+
+  const sec = parseInt(time, 10)
+  let h = Math.floor(sec / 3600)
+  let m = Math.floor((sec - h * 3600) / 60)
+  let s = sec - h * 3600 - m * 60
+
+  return {
+    hours: formatNumber(h),
+    mins: formatNumber(m),
+    secs: formatNumber(s)
+  }
+}

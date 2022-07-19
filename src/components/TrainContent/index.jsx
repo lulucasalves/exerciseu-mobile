@@ -1,52 +1,64 @@
-import { useEffect, useState } from 'react'
+import { TouchableOpacity } from 'react-native'
 import { Text, View } from 'react-native'
-import { useSelector } from 'react-redux'
+import { theme } from '../../styles/theme'
 import { styles } from './styles'
 
-export function TrainContent() {
-  const formatNumber = (number) => (number < 10 ? `0${number}` : number)
-  const { currentPlay } = useSelector((auth) => auth.play)
-
-  function getRemaining(time) {
-    const sec = parseInt(time, 10)
-    let h = Math.floor(sec / 3600)
-    let m = Math.floor((sec - h * 3600) / 60)
-    let s = sec - h * 3600 - m * 60
-
-    return {
-      hours: formatNumber(h),
-      mins: formatNumber(m),
-      secs: formatNumber(s)
-    }
-  }
-
-  const [remainingSecs, setRemainingSecs] = useState(3600)
-  const [isActive, setIsActive] = useState(false)
-  const { hours, mins, secs } = getRemaining(remainingSecs)
-
-  useEffect(() => {
-    let interval = null
-
-    if (isActive && remainingSecs > 0) {
-      interval = setInterval(() => {
-        setRemainingSecs((remainingSecs) => remainingSecs - 1)
-      }, 1000)
-    }
-    return () => clearInterval(interval)
-  }, [isActive, remainingSecs])
-
-  useEffect(() => {
-    if (currentPlay) {
-      setRemainingSecs(currentPlay.totalTime * 60)
-    }
-  }, [currentPlay])
-
+export function TrainContent({
+  setIsActive,
+  totalHours,
+  exerciseHours,
+  completeTrain,
+  nextStep,
+  step,
+  isActive,
+  exerciseSecs
+}) {
   return (
     <View style={styles.container}>
-      <Text style={styles.finishTime}>{`Faltam ${hours}:${mins}:${secs}`}</Text>
-      <Text onPress={() => setIsActive(!isActive)}>
-        {!isActive ? 'Continuar' : 'Pausar'}
-      </Text>
+      <Text
+        style={styles.finishTime}
+      >{`Faltam ${totalHours.hours}:${totalHours.mins}:${totalHours.secs}`}</Text>
+      <View
+        style={[
+          styles.exerciseBox,
+          {
+            borderColor:
+              completeTrain[step - 1].type === 1 ? theme.primary : theme.yellow
+          }
+        ]}
+      >
+        <Text style={styles.exerciseText}>
+          {`${exerciseHours.mins}:${exerciseHours.secs}`}
+        </Text>
+        {completeTrain[step - 1].quantity > 0 && (
+          <Text style={styles.quantityText}>
+            {`${completeTrain[step - 1].quantity}x`}
+          </Text>
+        )}
+      </View>
+      <Text style={styles.exerciseName}>{completeTrain[step - 1].name}</Text>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setIsActive(!isActive)}
+      >
+        <Text style={styles.buttonText}>
+          {!isActive ? 'Continuar' : 'Pausar'}
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[
+          styles.buttonNext,
+          {
+            backgroundColor:
+              exerciseSecs < completeTrain[step - 1].time - 5
+                ? theme.primary
+                : theme.gray
+          }
+        ]}
+        onPress={() => nextStep()}
+      >
+        <Text style={styles.buttonText}>Próximo</Text>
+      </TouchableOpacity>
     </View>
   )
 }

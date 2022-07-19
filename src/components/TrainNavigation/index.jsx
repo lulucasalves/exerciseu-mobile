@@ -6,11 +6,9 @@ import {
 } from '@expo/vector-icons'
 import { styles } from './styles'
 import { useNavigation } from '@react-navigation/native'
-import { useState } from 'react'
 
-export function TrainNavigation() {
+export function TrainNavigation({ repeat, setRepeat }) {
   const navigation = useNavigation()
-  const [repeat, setRepeat] = useState(false)
 
   function navigate(page) {
     navigation.navigate(page)
@@ -24,9 +22,8 @@ export function TrainNavigation() {
       <TouchableOpacity onPress={() => console.log('Play')}>
         <SimpleLineIcons name="social-spotify" size={25} color="#fff" />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => console.log('GymAll')}>
+      <TouchableOpacity onPress={() => setRepeat(!repeat)}>
         <MaterialCommunityIcons
-          onPress={() => setRepeat(!repeat)}
           name={`repeat${repeat ? '' : '-off'}`}
           size={25}
           color="#fff"
