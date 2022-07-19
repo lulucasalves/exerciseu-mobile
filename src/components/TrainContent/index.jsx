@@ -55,7 +55,9 @@ export function TrainContent({
                 : theme.gray
           }
         ]}
-        onPress={() => nextStep()}
+        onPress={() => {
+          nextStep()
+        }}
       >
         <Text style={styles.buttonText}>Próximo</Text>
       </TouchableOpacity>

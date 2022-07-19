@@ -1,4 +1,6 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useEffect, useState } from 'react'
+import { Vibration } from 'react-native'
 import { useSelector } from 'react-redux'
 import { Background } from '../../components/Background'
 import { TrainContent } from '../../components/TrainContent'
@@ -23,6 +25,12 @@ export function Train() {
       quantity: 0
     },
     {
+      time: 10,
+      name: 'Descanso',
+      type: 0,
+      quantity: 0
+    },
+    {
       time: 70,
       name: 'Abdominais',
       type: 1,
@@ -42,26 +50,47 @@ export function Train() {
   function prevStep() {
     if (step > 1) {
       setStep((old) => old - 1)
+      setRemainingSecs(
+        (oldSecs) =>
+          oldSecs +
+          completeTrain[step - 2].time +
+          (completeTrain[step - 1].time - exerciseSecs)
+      )
     }
   }
 
   useEffect(() => {
     let interval = null
-    const countExercise = exerciseSecs > 1 || autoMode
+    ;(async () => {
+      const vibrate = await AsyncStorage.getItem('vibrate')
 
-    if (countExercise) {
-      nextStep()
-    }
+      if (exerciseSecs === 0 && vibrate === '1') {
+        Vibration.vibrate([500, 1000, 2000])
+      }
+    })()
 
-    if (isActive && remainingSecs > 0 && countExercise) {
-      interval = setInterval(() => {
-        setRemainingSecs((oldSecs) => oldSecs - 1)
-        setExerciseSecs((oldSecs) => oldSecs - 1)
-      }, 1000)
+    if (autoMode) {
+      if (isActive && remainingSecs > 0) {
+        interval = setInterval(() => {
+          setRemainingSecs((oldSecs) => oldSecs - 1)
+          setExerciseSecs((oldSecs) => oldSecs - 1)
+        }, 1000)
+      }
+
+      if (exerciseSecs <= 0) {
+        nextStep()
+      }
+    } else {
+      if (isActive && remainingSecs > 0 && exerciseSecs > 0) {
+        interval = setInterval(() => {
+          setRemainingSecs((oldSecs) => oldSecs - 1)
+          setExerciseSecs((oldSecs) => oldSecs - 1)
+        }, 1000)
+      }
     }
 
     return () => clearInterval(interval)
-  }, [isActive, remainingSecs])
+  }, [isActive, exerciseSecs])
 
   useEffect(() => {
     if (currentPlay) {
