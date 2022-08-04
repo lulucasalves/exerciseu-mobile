@@ -7,6 +7,7 @@ import { TrainContent } from '../../components/TrainContent'
 import { TrainHeader } from '../../components/TrainHeader'
 import { TrainNavigation } from '../../components/TrainNavigation'
 import { getRemaining } from '../../utils/formatTime'
+import { Audio } from 'expo-av'
 
 export function Train() {
   const { currentPlay } = useSelector((auth) => auth.play)
@@ -38,6 +39,26 @@ export function Train() {
     }
   ])
 
+  const [sound, setSound] = useState()
+
+  async function playSound() {
+    const { sound } = await Audio.Sound.createAsync(
+      require('../../assets/sounds/notification.mp3')
+    )
+
+    setSound(sound)
+
+    await sound.playAsync()
+  }
+
+  useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync()
+        }
+      : undefined
+  }, [sound])
+
   function nextStep() {
     if (
       completeTrain.length > step &&
@@ -63,9 +84,14 @@ export function Train() {
     let interval = null
     ;(async () => {
       const vibrate = await AsyncStorage.getItem('vibrate')
+      const audio = await AsyncStorage.getItem('audio')
 
       if (exerciseSecs === 0 && vibrate === '1') {
         Vibration.vibrate([500, 1000, 2000])
+      }
+
+      if (exerciseSecs === 0 && audio === '1') {
+        await playSound()
       }
     })()
 

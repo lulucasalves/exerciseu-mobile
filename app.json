@@ -1,11 +1,11 @@
 {
   "expo": {
     "name": "exerciseu",
-    "slug": "ExerciseU",
+    "slug": "exerciseu",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "scheme": "Exerciseu",
+    "scheme": "exerciseu",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
