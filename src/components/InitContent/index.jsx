@@ -72,6 +72,8 @@ export function InitContent({ currentPlay, statusModal, preparationModal }) {
   }, [])
 
   async function save() {
+    await AsyncStorage.setItem('trainsStorage', '')
+
     dispatch(
       setPlayConfig({
         audio,

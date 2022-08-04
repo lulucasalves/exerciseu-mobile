@@ -8,8 +8,25 @@ import { TrainHeader } from '../../components/TrainHeader'
 import { TrainNavigation } from '../../components/TrainNavigation'
 import { getRemaining } from '../../utils/formatTime'
 import { Audio } from 'expo-av'
+import { useNavigation } from '@react-navigation/native'
 
 export function Train() {
+  const myTrains = [
+    {
+      time: 6,
+      name: 'Flexões1',
+      type: 1,
+      quantity: 0
+    },
+    {
+      time: 6,
+      name: 'Descanso',
+      type: 0,
+      quantity: 0
+    }
+  ]
+
+  const navigation = useNavigation()
   const { currentPlay } = useSelector((auth) => auth.play)
   const [remainingSecs, setRemainingSecs] = useState(3600)
   const [exerciseSecs, setExerciseSecs] = useState(60)
@@ -18,24 +35,13 @@ export function Train() {
   const totalHours = getRemaining(remainingSecs)
   const exerciseHours = getRemaining(exerciseSecs)
   const [autoMode, setAutoMode] = useState(false)
+  const [jump, setJump] = useState(true)
   const [completeTrain, setCompleteTrain] = useState([
     {
-      time: 6,
-      name: 'Flexões',
-      type: 1,
-      quantity: 0
-    },
-    {
-      time: 10,
-      name: 'Descanso',
+      time: 200,
+      name: '',
       type: 0,
       quantity: 0
-    },
-    {
-      time: 70,
-      name: 'Abdominais',
-      type: 1,
-      quantity: 20
     }
   ])
 
@@ -61,10 +67,28 @@ export function Train() {
 
   function nextStep() {
     if (
-      completeTrain.length > step &&
-      exerciseSecs < completeTrain[step - 1].time - 5
+      exerciseSecs < completeTrain[step - 1].time - 5 &&
+      completeTrain.length > step
     ) {
+      if (completeTrain[step - 1].type !== 0) {
+        ;(async () => {
+          const totalValueStr = await AsyncStorage.getItem('totalTime')
+          const totalValue = totalValueStr ? parseInt(totalValueStr) : 0
+
+          await AsyncStorage.setItem(
+            'totalTime',
+            String(completeTrain[step - 1].time + totalValue)
+          )
+        })()
+      }
       setStep((old) => old + 1)
+    } else if (completeTrain.length > step && jump) {
+      setStep((old) => old + 1)
+    } else {
+      ;(async () => {
+        await AsyncStorage.setItem('trainsStorage', '')
+        navigation.navigate('Home')
+      })()
     }
   }
 
@@ -81,16 +105,74 @@ export function Train() {
   }
 
   useEffect(() => {
+    ;(async () => {
+      const jumpExercises = await AsyncStorage.getItem('jump')
+      let trainsStorage = await AsyncStorage.getItem('trainsStorage')
+      const prepare = await AsyncStorage.getItem('preparation')
+      const stretch = await AsyncStorage.getItem('stretch')
+
+      if (jumpExercises === '0') setJump(false)
+
+      if (!trainsStorage) {
+        await AsyncStorage.setItem('trainsStorage', JSON.stringify(myTrains))
+        trainsStorage = JSON.stringify(myTrains)
+      }
+
+      let listStorage = JSON.parse(trainsStorage)
+
+      if (parseInt(prepare) > 0 && parseInt(stretch) > 0) {
+        setCompleteTrain([
+          {
+            time: parseInt(stretch),
+            name: 'Alongamento',
+            type: 1,
+            quantity: 0
+          },
+          {
+            time: parseInt(prepare),
+            name: 'Prepare-se',
+            type: 0,
+            quantity: 0
+          },
+          ...listStorage
+        ])
+      } else if (!parseInt(prepare) > 0 && parseInt(stretch) > 0) {
+        setCompleteTrain([
+          {
+            time: parseInt(stretch),
+            name: 'Alongamento',
+            type: 1,
+            quantity: 0
+          },
+          ...listStorage
+        ])
+      } else if (parseInt(prepare) > 0 && !parseInt(stretch) > 0) {
+        setCompleteTrain([
+          {
+            time: parseInt(prepare),
+            name: 'Prepare-se',
+            type: 0,
+            quantity: 0
+          },
+          ...listStorage
+        ])
+      } else {
+        setCompleteTrain(listStorage)
+      }
+    })()
+  }, [])
+
+  useEffect(() => {
     let interval = null
     ;(async () => {
       const vibrate = await AsyncStorage.getItem('vibrate')
       const audio = await AsyncStorage.getItem('audio')
 
-      if (exerciseSecs === 0 && vibrate === '1') {
+      if (exerciseSecs === 0 && vibrate === '1' && isActive) {
         Vibration.vibrate([500, 1000, 2000])
       }
 
-      if (exerciseSecs === 0 && audio === '1') {
+      if (exerciseSecs === 0 && audio === '1' && isActive) {
         await playSound()
       }
     })()
@@ -130,10 +212,11 @@ export function Train() {
 
   return (
     <Background>
-      <TrainHeader nextStep={nextStep} prevStep={prevStep} />
+      <TrainHeader jump={jump} nextStep={nextStep} prevStep={prevStep} />
       <TrainContent
         nextStep={nextStep}
         setIsActive={setIsActive}
+        jump={jump}
         step={step}
         isActive={isActive}
         totalHours={totalHours}

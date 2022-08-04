@@ -11,7 +11,8 @@ export function TrainContent({
   nextStep,
   step,
   isActive,
-  exerciseSecs
+  exerciseSecs,
+  jump
 }) {
   return (
     <View style={styles.container}>
