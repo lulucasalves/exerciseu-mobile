@@ -27,10 +27,10 @@ export function ProfileContent() {
       <View style={styles.statistics}>
         <View style={styles.medalLeague}>
           <View>
-            <Text style={styles.title}>Medalhas</Text>
+            <Text style={styles.title}>Classificação</Text>
             <View style={styles.medal}>
               <MaterialCommunityIcons
-                name="medal-outline"
+                name="trophy-award"
                 size={25}
                 color={theme.medal}
               />

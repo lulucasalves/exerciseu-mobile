@@ -66,19 +66,20 @@ export function Train() {
   }, [sound])
 
   function nextStep() {
-    if (
-      exerciseSecs < completeTrain[step - 1].time - 5 &&
-      completeTrain.length > step
-    ) {
-      if (completeTrain[step - 1].type !== 0) {
+    const trainType = completeTrain[step - 1].type || 0
+    const trainTime = completeTrain[step - 1].time || 0
+
+    if (exerciseSecs < trainTime - 5 && completeTrain.length > step) {
+      if (trainType !== 0) {
         ;(async () => {
           const totalValueStr = await AsyncStorage.getItem('totalTime')
           const totalValue = totalValueStr ? parseInt(totalValueStr) : 0
 
           await AsyncStorage.setItem(
             'totalTime',
-            String(completeTrain[step - 1].time + totalValue)
+            String(trainTime + totalValue)
           )
+          await AsyncStorage.setItem('currentStep', String(step))
         })()
       }
       setStep((old) => old + 1)
@@ -86,20 +87,21 @@ export function Train() {
       setStep((old) => old + 1)
     } else {
       ;(async () => {
+        await AsyncStorage.setItem('currentStep', '')
         await AsyncStorage.setItem('trainsStorage', '')
-        navigation.navigate('Home')
+        navigation.navigate('FinishTrain')
       })()
     }
   }
 
   function prevStep() {
+    const trainTime = completeTrain[step - 1].time || 0
+
     if (step > 1) {
       setStep((old) => old - 1)
       setRemainingSecs(
         (oldSecs) =>
-          oldSecs +
-          completeTrain[step - 2].time +
-          (completeTrain[step - 1].time - exerciseSecs)
+          oldSecs + completeTrain[step - 2].time + (trainTime - exerciseSecs)
       )
     }
   }
@@ -209,6 +211,18 @@ export function Train() {
   useEffect(() => {
     setExerciseSecs(completeTrain[step - 1].time)
   }, [completeTrain, step])
+
+  useEffect(() => {
+    ;(async () => {
+      const currentStep = await AsyncStorage.getItem('currentStep')
+      if (
+        parseInt(currentStep) > 0 &&
+        completeTrain.length > parseInt(currentStep)
+      ) {
+        setStep(parseInt(currentStep))
+      }
+    })()
+  }, [completeTrain])
 
   return (
     <Background>
