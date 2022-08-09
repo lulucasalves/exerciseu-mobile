@@ -11,12 +11,13 @@ import { Audio } from 'expo-av'
 import { useNavigation } from '@react-navigation/native'
 
 export function Train() {
+  const { currentExercise } = useSelector((auth) => auth.exercise)
   const myTrains = [
     {
       time: 6,
       name: 'Flexões1',
       type: 1,
-      quantity: 0
+      quantity: 20
     },
     {
       time: 6,
@@ -58,6 +59,14 @@ export function Train() {
   }
 
   useEffect(() => {
+    ;(async () => {
+      if (currentExercise.id !== '0') {
+        await AsyncStorage.setItem('exerciseId', currentExercise.id)
+      }
+    })()
+  }, [currentExercise])
+
+  useEffect(() => {
     return sound
       ? () => {
           sound.unloadAsync()
@@ -88,7 +97,7 @@ export function Train() {
     } else {
       ;(async () => {
         await AsyncStorage.setItem('currentStep', '')
-        await AsyncStorage.setItem('trainsStorage', '')
+        await AsyncStorage.setItem('exerciseId', '')
         navigation.navigate('FinishTrain')
       })()
     }
@@ -109,18 +118,17 @@ export function Train() {
   useEffect(() => {
     ;(async () => {
       const jumpExercises = await AsyncStorage.getItem('jump')
-      let trainsStorage = await AsyncStorage.getItem('trainsStorage')
       const prepare = await AsyncStorage.getItem('preparation')
       const stretch = await AsyncStorage.getItem('stretch')
+      const exerciseId = (await AsyncStorage.getItem('exerciseId')) || ''
 
       if (jumpExercises === '0') setJump(false)
 
-      if (!trainsStorage) {
-        await AsyncStorage.setItem('trainsStorage', JSON.stringify(myTrains))
-        trainsStorage = JSON.stringify(myTrains)
-      }
+      let listStorage = myTrains
 
-      let listStorage = JSON.parse(trainsStorage)
+      if (exerciseId) {
+        listStorage = myTrains
+      }
 
       if (parseInt(prepare) > 0 && parseInt(stretch) > 0) {
         setCompleteTrain([
@@ -215,8 +223,10 @@ export function Train() {
   useEffect(() => {
     ;(async () => {
       const currentStep = await AsyncStorage.getItem('currentStep')
+
       if (
         parseInt(currentStep) > 0 &&
+        exerciseId &&
         completeTrain.length > parseInt(currentStep)
       ) {
         setStep(parseInt(currentStep))
@@ -237,6 +247,7 @@ export function Train() {
         exerciseSecs={exerciseSecs}
         exerciseHours={exerciseHours}
         completeTrain={completeTrain}
+        total={completeTrain[step - 1].time}
       />
       <TrainNavigation setRepeat={setAutoMode} repeat={autoMode} />
     </Background>

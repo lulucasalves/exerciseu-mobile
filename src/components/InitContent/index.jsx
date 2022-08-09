@@ -72,7 +72,7 @@ export function InitContent({ currentPlay, statusModal, preparationModal }) {
   }, [])
 
   async function save() {
-    await AsyncStorage.setItem('trainsStorage', '')
+    await AsyncStorage.setItem('exerciseId', '')
     await AsyncStorage.setItem('currentStep', '')
 
     dispatch(

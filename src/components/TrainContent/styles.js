@@ -19,9 +19,34 @@ export const styles = StyleSheet.create({
     width: 250,
     height: 250,
     borderWidth: 11,
-    borderRadius: 2000,
+    borderRadius: 500,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderColor: theme.gray
+  },
+  exerciseBox2: {
+    width: 250,
+    height: 250,
+    borderRadius: 500,
+    borderWidth: 11,
+    borderLeftColor: 'transparent',
+    borderBottomColor: 'transparent',
+    borderRightColor: '#3498db',
+    borderTopColor: '#3498db',
+    justifyContent: 'center',
+    alignItems: 'center',
+    transform: [{ rotateZ: '-45deg' }]
+  },
+  exerciseBox3: {
+    width: 250,
+    height: 250,
+    borderWidth: 11,
+    borderRadius: 500,
+    borderLeftColor: 'transparent',
+    borderBottomColor: 'transparent',
+    borderRightColor: theme.gray,
+    borderTopColor: theme.gray,
+    transform: [{ rotateZ: '-155deg' }]
   },
   exerciseText: {
     fontFamily: 'WorkSans_400Regular',

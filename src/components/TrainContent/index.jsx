@@ -1,6 +1,7 @@
 import { TouchableOpacity } from 'react-native'
 import { Text, View } from 'react-native'
 import { theme } from '../../styles/theme'
+import CircularProgress from '../CircularOpt'
 import { styles } from './styles'
 
 export function TrainContent({
@@ -12,31 +13,21 @@ export function TrainContent({
   step,
   isActive,
   exerciseSecs,
-  jump
+  total
 }) {
   return (
     <View style={styles.container}>
       <Text
         style={styles.finishTime}
       >{`Faltam ${totalHours.hours}:${totalHours.mins}:${totalHours.secs}`}</Text>
-      <View
-        style={[
-          styles.exerciseBox,
-          {
-            borderColor:
-              completeTrain[step - 1].type === 1 ? theme.primary : theme.yellow
-          }
-        ]}
-      >
-        <Text style={styles.exerciseText}>
-          {`${exerciseHours.mins}:${exerciseHours.secs}`}
-        </Text>
-        {completeTrain[step - 1].quantity > 0 && (
-          <Text style={styles.quantityText}>
-            {`${completeTrain[step - 1].quantity}x`}
-          </Text>
-        )}
-      </View>
+      <CircularProgress
+        exerciseHours={exerciseHours}
+        exerciseSecs={exerciseSecs}
+        total={total}
+        completeTrain={completeTrain}
+        step={step}
+      />
+
       <Text style={styles.exerciseName}>{completeTrain[step - 1].name}</Text>
       <TouchableOpacity
         style={styles.button}
