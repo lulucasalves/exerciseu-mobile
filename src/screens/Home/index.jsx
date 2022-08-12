@@ -7,6 +7,7 @@ import { Navigation } from '../../components/Navigation'
 
 export function Home() {
   const [loading, setLoading] = useState(false)
+
   return (
     <Background>
       {loading ? (

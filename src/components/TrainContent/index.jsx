@@ -3,6 +3,8 @@ import { Text, View } from 'react-native'
 import { theme } from '../../styles/theme'
 import CircularProgress from '../CircularOpt'
 import { styles } from './styles'
+import * as Notifications from 'expo-notifications'
+import { useEffect } from 'react'
 
 export function TrainContent({
   setIsActive,
@@ -15,6 +17,38 @@ export function TrainContent({
   exerciseSecs,
   total
 }) {
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowAlert: true,
+      shouldPlaySound: false,
+      shouldSetBadge: true
+    })
+  })
+
+  useEffect(() => {
+    Notifications.dismissAllNotificationsAsync()
+
+    Notifications.scheduleNotificationAsync({
+      content: {
+        title: 'Look at that notification',
+        body: `Faltam nkn`,
+        categoryIdentifier: 'opa'
+      },
+      trigger: null
+    })
+
+    Notifications.setNotificationCategoryAsync('opa', [
+      {
+        actionId: 'one',
+        buttonTitle: isActive ? 'Pausar' : 'Continuar'
+      }
+    ])
+
+    Notifications.addNotificationResponseReceivedListener(() =>
+      setIsActive(!isActive)
+    )
+  }, [isActive])
+
   return (
     <View style={styles.container}>
       <Text
