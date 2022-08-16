@@ -33,6 +33,10 @@ target 'exerciseumobile' do
   #   use_flipper!()
   # end
 
+  pod 'RNFloatingBubble', :path => '../node_modules/react-native-floating-bubble'
+
+  pod 'RNPermissions', :path => '../node_modules/react-native-permissions'
+
   post_install do |installer|
     react_native_post_install(installer)
     __apply_Xcode_12_5_M1_post_install_workaround(installer)

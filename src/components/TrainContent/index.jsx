@@ -5,6 +5,7 @@ import CircularProgress from '../CircularOpt'
 import { styles } from './styles'
 import * as Notifications from 'expo-notifications'
 import { useEffect, useRef, useState } from 'react'
+import { formatTime } from '../../utils/formatTime'
 
 export function TrainContent({
   setIsActive,
@@ -44,10 +45,18 @@ export function TrainContent({
 
       setTimeTo(time)
 
+      const mins = exerciseSecs > 59 ? exerciseSecs / 60 : 0
+      const secs = mins > 0 ? mins * 60 - exerciseSecs : exerciseSecs
       Notifications.scheduleNotificationAsync({
         content: {
           title: 'Treino em andamento',
-          body: `Exercício de pernas termina em ${exerciseSecs} segundos`,
+          body: `${
+            completeTrain[step - 1].name
+              ? completeTrain[step - 1].name
+              : 'O exercício'
+          } termina em ${mins > 9 ? mins : `0${mins}`}:${
+            secs > 9 ? secs : `0${secs}`
+          }`,
           categoryIdentifier: 'train'
         },
         trigger: null
@@ -95,7 +104,7 @@ export function TrainContent({
     return () => {
       subscription.remove()
     }
-  }, [isActive])
+  }, [isActive, exerciseSecs])
 
   return (
     <View style={styles.container}>
@@ -108,6 +117,7 @@ export function TrainContent({
         total={total}
         completeTrain={completeTrain}
         step={step}
+        rest={completeTrain[step - 1].type === 0 ? true : false}
       />
 
       <Text style={styles.exerciseName}>{completeTrain[step - 1].name}</Text>

@@ -7,7 +7,7 @@ import {
 import { styles } from './styles'
 import { useNavigation } from '@react-navigation/native'
 
-export function TrainNavigation({ repeat, setRepeat }) {
+export function TrainNavigation({ repeat, setRepeat, spotify }) {
   const navigation = useNavigation()
 
   function navigate(page) {
@@ -19,9 +19,11 @@ export function TrainNavigation({ repeat, setRepeat }) {
       <TouchableOpacity onPress={() => navigate('Home')}>
         <Ionicons name="exit-outline" size={25} color="#fff" />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => console.log('Play')}>
-        <SimpleLineIcons name="social-spotify" size={25} color="#fff" />
-      </TouchableOpacity>
+      {spotify && (
+        <TouchableOpacity onPress={() => console.log('Play')}>
+          <SimpleLineIcons name="social-spotify" size={25} color="#fff" />
+        </TouchableOpacity>
+      )}
       <TouchableOpacity onPress={() => setRepeat(!repeat)}>
         <MaterialCommunityIcons
           name={`repeat${repeat ? '' : '-off'}`}

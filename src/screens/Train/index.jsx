@@ -37,6 +37,7 @@ export function Train() {
   const exerciseHours = getRemaining(exerciseSecs)
   const [autoMode, setAutoMode] = useState(false)
   const [jump, setJump] = useState(true)
+  const [spotify, setSpotify] = useState(true)
   const [completeTrain, setCompleteTrain] = useState([
     {
       time: 200,
@@ -124,9 +125,11 @@ export function Train() {
       const jumpExercises = await AsyncStorage.getItem('jump')
       const prepare = await AsyncStorage.getItem('preparation')
       const stretch = await AsyncStorage.getItem('stretch')
+      const spotify = await AsyncStorage.getItem('spotify')
       const exerciseId = (await AsyncStorage.getItem('exerciseId')) || ''
 
       if (jumpExercises === '0') setJump(false)
+      if (spotify === '0') setSpotify(false)
 
       let listStorage = myTrains
 
@@ -254,7 +257,11 @@ export function Train() {
         setExerciseSecs={setExerciseSecs}
         setRemainingSecs={setRemainingSecs}
       />
-      <TrainNavigation setRepeat={setAutoMode} repeat={autoMode} />
+      <TrainNavigation
+        spotify={spotify}
+        setRepeat={setAutoMode}
+        repeat={autoMode}
+      />
     </Background>
   )
 }

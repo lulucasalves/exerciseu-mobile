@@ -1,4 +1,4 @@
-import { StatusBar, LogBox, View } from 'react-native'
+import { StatusBar, LogBox, View, DeviceEventEmitter } from 'react-native'
 import React, { useCallback, useMemo, useState } from 'react'
 import { Background } from './src/components/Background'
 import * as SplashScreen from 'expo-splash-screen'
@@ -17,9 +17,6 @@ import store from './src/store'
 
 LogBox.ignoreLogs([
   'You are not currently signed in to Expo on your development machine.'
-])
-LogBox.ignoreLogs([
-  '[expo-notifications] Error encountered while updating server registration with latest device push token., [Error: Fetching the token failed: Please set your Project ID. A valid Firebase Project ID is required to communicate with Firebase server APIs: It identifies your application with Firebase.Please refer to https://firebase.google.com/support/privacy/init-options.]'
 ])
 LogBox.ignoreLogs([
   "ViewPropTypes will be removed from React Native. Migrate to ViewPropTypes exported from 'deprecated-react-native-prop-types'.",

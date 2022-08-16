@@ -20,8 +20,6 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     borderLeftColor: 'transparent',
     borderBottomColor: 'transparent',
-    borderRightColor: theme.primary,
-    borderTopColor: theme.primary,
     transform: [{ rotateZ: '-135deg' }],
     strokeLinecap: 'round'
   },
