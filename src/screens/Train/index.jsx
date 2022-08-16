@@ -93,6 +93,10 @@ export function Train() {
       }
       setStep((old) => old + 1)
     } else if (completeTrain.length > step && jump) {
+      setRemainingSecs(
+        (oldSecs) => oldSecs - (trainTime - (trainTime - exerciseSecs))
+      )
+
       setStep((old) => old + 1)
     } else {
       ;(async () => {
@@ -110,7 +114,7 @@ export function Train() {
       setStep((old) => old - 1)
       setRemainingSecs(
         (oldSecs) =>
-          oldSecs + completeTrain[step - 2].time + (trainTime - exerciseSecs)
+          oldSecs + (completeTrain[step - 2].time + (trainTime - exerciseSecs))
       )
     }
   }
@@ -198,13 +202,11 @@ export function Train() {
       if (exerciseSecs <= 0) {
         nextStep()
       }
-    } else {
-      if (isActive && remainingSecs > 0 && exerciseSecs > 0) {
-        interval = setInterval(() => {
-          setRemainingSecs((oldSecs) => oldSecs - 1)
-          setExerciseSecs((oldSecs) => oldSecs - 1)
-        }, 1000)
-      }
+    } else if (isActive && remainingSecs > 0 && exerciseSecs > 0) {
+      interval = setInterval(() => {
+        setRemainingSecs((oldSecs) => oldSecs - 1)
+        setExerciseSecs((oldSecs) => oldSecs - 1)
+      }, 1000)
     }
 
     return () => clearInterval(interval)
@@ -223,6 +225,7 @@ export function Train() {
   useEffect(() => {
     ;(async () => {
       const currentStep = await AsyncStorage.getItem('currentStep')
+      const exerciseId = (await AsyncStorage.getItem('exerciseId')) || ''
 
       if (
         parseInt(currentStep) > 0 &&
@@ -248,6 +251,8 @@ export function Train() {
         exerciseHours={exerciseHours}
         completeTrain={completeTrain}
         total={completeTrain[step - 1].time}
+        setExerciseSecs={setExerciseSecs}
+        setRemainingSecs={setRemainingSecs}
       />
       <TrainNavigation setRepeat={setAutoMode} repeat={autoMode} />
     </Background>
