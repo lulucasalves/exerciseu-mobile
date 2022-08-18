@@ -15,6 +15,7 @@ import { SelectTrain } from '../screens/SelectTrain'
 import { InitTrain } from '../screens/InitTrain'
 import { Train } from '../screens/Train'
 import { FinishTrain } from '../screens/FinishTrain'
+import { Spotify } from '../screens/Spotify'
 const { Navigator, Screen } = createStackNavigator()
 
 export function AuthRoutes() {
@@ -38,6 +39,7 @@ export function AuthRoutes() {
       <Screen name="Select" component={SelectTrain} />
       <Screen name="InitTrain" component={InitTrain} />
       <Screen name="Train" component={Train} />
+      <Screen name="Spotify" component={Spotify} />
       <Screen name="FinishTrain" component={FinishTrain} />
     </Navigator>
   )

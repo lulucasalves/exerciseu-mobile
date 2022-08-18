@@ -12,5 +12,5 @@ export const theme = {
   muted: 'rgba(0,0,0,0.6)',
   gray: 'rgba(0,0,0,0.2)',
   gray8: 'rgba(0,0,0,0.8)',
-  grayAbsolute: '#DCDCDC'
+  grayAbsolute: '#DCDCDC',
 }
