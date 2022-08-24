@@ -115,11 +115,11 @@ export function AuthRoutes() {
         component={Train}
       />
       <Screen
-        name="Spotify"
-        component={Spotify}
         options={{
           animationEnabled: false
         }}
+        name="Spotify"
+        component={Spotify}
       />
       <Screen
         options={{

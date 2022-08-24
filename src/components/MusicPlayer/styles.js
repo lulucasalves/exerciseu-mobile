@@ -27,8 +27,8 @@ export const styles = StyleSheet.create({
     marginTop: 10
   },
   image: {
-    width: 120,
-    height: 60,
+    width: 90,
+    height: 90,
     borderRadius: 5
   },
   buttons: {
@@ -40,6 +40,8 @@ export const styles = StyleSheet.create({
     marginLeft: 20
   },
   title: {
-    fontFamily: 'WorkSans_500Medium'
+    fontFamily: 'WorkSans_400Regular',
+    fontSize: 10,
+    color: theme.muted
   }
 })

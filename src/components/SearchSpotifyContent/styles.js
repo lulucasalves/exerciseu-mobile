@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     paddingLeft: 20,
     paddingRight: 20,
-    marginTop: 20
+    marginTop: 20,
+    marginBottom: 70
   },
 
   input: {
@@ -52,6 +53,7 @@ export const styles = StyleSheet.create({
     fontFamily: 'WorkSans_600SemiBold',
     color: theme.text,
     fontSize: 16,
-    marginBottom: 20
+    marginBottom: 20,
+    marginTop: 20
   }
 })
