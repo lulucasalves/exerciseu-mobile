@@ -1,24 +1,28 @@
 import { useEffect, useState } from 'react'
 import { Image, Text } from 'react-native'
 import { TextInput, View } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
-import { getSearchMusics } from '../../services/searchMusics'
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { theme } from '../../styles/theme'
 import { styles } from './styles'
+import * as playlists from '../../data/playlists.json'
 
 export function SearchSpotifyContent() {
   const [title, setTitle] = useState('')
   const [items, setItems] = useState([
     {
-      id: '',
       name: '',
-      artist: '',
-      image: ''
+      image:
+        'https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/8d.jpg?raw=true',
+      list: []
     }
   ])
 
+  useEffect(() => {
+    setItems(playlists.data)
+  }, [])
+
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <TextInput
         placeholderTextColor={theme.muted}
         value={title}
@@ -27,13 +31,14 @@ export function SearchSpotifyContent() {
           styles.input,
           { borderColor: title ? theme.primary : theme.gray }
         ]}
-        placeholder="Adicione uma playlist pública do youtube"
+        placeholder="Adicione sua playlist do youtube"
       />
       <View style={styles.tracks}>
+        <Text style={styles.musicTitle}>Músicas Internacionais</Text>
         {items.map((val) => {
           if (val.id !== '0') {
             return (
-              <TouchableOpacity style={styles.music} key={val.id}>
+              <TouchableOpacity style={styles.music} key={val.name}>
                 <Image
                   style={styles.image}
                   source={{
@@ -46,13 +51,15 @@ export function SearchSpotifyContent() {
                       ? val.name
                       : `${val.name.slice(0, 25)}...`}
                   </Text>
-                  <Text style={styles.textArtist}>{val.artist}</Text>
+                  <Text
+                    style={styles.textArtist}
+                  >{`${val.list.length} Playlists`}</Text>
                 </View>
               </TouchableOpacity>
             )
           }
         })}
       </View>
-    </View>
+    </ScrollView>
   )
 }

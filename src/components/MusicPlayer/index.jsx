@@ -6,15 +6,12 @@ import { styles } from './styles'
 import Slider from '@react-native-community/slider'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import YoutubePlayer from 'react-native-youtube-iframe'
-import * as Playlists from '../../data/playlists.json'
 
 export function MusicPlayer() {
   const [slider, setSlider] = useState(0)
   const [sliderTime, setSliderTime] = useState(0)
   const [playing, setPlaying] = useState(false)
   const [timer, setTimer] = useState(60)
-
-  console.log(Playlists)
 
   const onStateChange = useCallback((state) => {
     if (state === 'ended') {
@@ -126,7 +123,7 @@ export function MusicPlayer() {
           />
         </View>
       </View>
-      <Text style={styles.title}>Título da musica que está tocando</Text>
+      <Text style={styles.title}>Musícas Internacionais</Text>
     </View>
   )
 }

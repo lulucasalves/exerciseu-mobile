@@ -1,40 +1,111 @@
 {
-  "international": {
-    "image": "",
-    "list": [
-      "PL6k9a6aYB2zk0qSbXR-ZEiwqgdHymsRtQ",
-      "PLO7-VO1D0_6N2ePPlPE9NKCgUBA15aOk2",
-      "PLw-VjHDlEOgvOUbfyciaSBkrxwnuhZhMO",
-      "PLI_7Mg2Z_-4IWcD4drvDLYWp-eIZQUMUN",
-      "PLB8HqqmpyIBcPirb5lDm-ol01trE6dOuM",
-      "PL3oW2tjiIxvQpeIgr2Bhno4vQdfpI9Ax5",
-      "PLjGh5QznDJHAs59YmKbPueVKLGXSduebR",
-      "PLTC7VQ12-9raqhLCx1S1E_ic35t94dj28",
-      "PLP32wGpgzmIlDFQuxl1qeH33hJJSq8wfe",
-      "PLSR9lWowvoE3A9i4JVVHtQFjlJt0_LItG"
-    ]
-  },
-  "electronic": {
-    "image": "",
-    "list": [
-      "PL3oW2tjiIxvQ60uIjLdo7vrUe4ukSpbKl",
-      "PLgzTt0k8mXzHksBAyoa15hjvGBfwaZ2fY",
-      "PLyORnIW1xT6zH1bjLa6sxES0MaidlYH7C",
-      "PL4QNnZJr8sRNNN-MlUuedv00021R1aYLu",
-      "PLw-VjHDlEOgvOVGwxcnhq-M29fCHTKYOB",
-      "PL3WATaB8O49FuQKY-UebjQCbT85cWNOLg",
-      "PLaLWNpJCbH_pZ3GPPsSkrGNSXC22swINh",
-      "PLyORnIW1xT6z2BAXJtNulQIzFba_tq1T2",
-      "PLCy0Ry949H3i2jndDMJosmVNsqKM9i4Ij",
-      "PLkqz3S84Tw-TY5xxxl8cECbhcLivkUWdW"
-    ]
-  },
-  "8d": {
-    "image": "",
-    "list": [
-      "PL4Nzei3ISixLfnoCCW-0i60CSUvdIkYPJ",
-      "PLrymTUjXgdc_ba8bayFGoZdiWH5o1k4YA",
-      "PL9s91QYwRh7vX75RMRb2HJ-ZrIC78x_wa"
-    ]
-  }
+  "data": [
+    {
+      "name": "Hits",
+      "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/international.jpg?raw=true",
+      "list": [
+        "PL6k9a6aYB2zk0qSbXR-ZEiwqgdHymsRtQ",
+        "PLO7-VO1D0_6N2ePPlPE9NKCgUBA15aOk2",
+        "PLw-VjHDlEOgvOUbfyciaSBkrxwnuhZhMO",
+        "PLI_7Mg2Z_-4IWcD4drvDLYWp-eIZQUMUN",
+        "PLB8HqqmpyIBcPirb5lDm-ol01trE6dOuM",
+        "PL3oW2tjiIxvQpeIgr2Bhno4vQdfpI9Ax5",
+        "PLjGh5QznDJHAs59YmKbPueVKLGXSduebR",
+        "PLTC7VQ12-9raqhLCx1S1E_ic35t94dj28",
+        "PLP32wGpgzmIlDFQuxl1qeH33hJJSq8wfe",
+        "PLSR9lWowvoE3A9i4JVVHtQFjlJt0_LItG"
+      ]
+    },
+    {
+      "name": "Músicas Eletrônicas",
+      "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/electronic.jpg?raw=true",
+      "list": [
+        "PL3oW2tjiIxvQ60uIjLdo7vrUe4ukSpbKl",
+        "PLgzTt0k8mXzHksBAyoa15hjvGBfwaZ2fY",
+        "PLyORnIW1xT6zH1bjLa6sxES0MaidlYH7C",
+        "PL4QNnZJr8sRNNN-MlUuedv00021R1aYLu",
+        "PLw-VjHDlEOgvOVGwxcnhq-M29fCHTKYOB",
+        "PL3WATaB8O49FuQKY-UebjQCbT85cWNOLg",
+        "PLaLWNpJCbH_pZ3GPPsSkrGNSXC22swINh",
+        "PLyORnIW1xT6z2BAXJtNulQIzFba_tq1T2",
+        "PLCy0Ry949H3i2jndDMJosmVNsqKM9i4Ij",
+        "PLkqz3S84Tw-TY5xxxl8cECbhcLivkUWdW"
+      ]
+    },
+    {
+      "name": "Músicas 8D",
+      "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/8d.jpg?raw=true",
+      "list": [
+        "PL4Nzei3ISixLfnoCCW-0i60CSUvdIkYPJ",
+        "PLrymTUjXgdc_ba8bayFGoZdiWH5o1k4YA",
+        "PL9s91QYwRh7vX75RMRb2HJ-ZrIC78x_wa"
+      ]
+    },
+    {
+      "name": "Populares no TikTok",
+      "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/tiktok.jpg?raw=true",
+      "list": [
+        "PLTo6svdhIL1cxS4ffGueFpVCF756ip-ab",
+        "PLetgZKHHaF-bxHfCh4BPC4d1sWdZuDzNU",
+        "PLcirGkCPmbmFMTvVKFvcG_tRAPkN_QcV1",
+        "PLFcGX84jKOu6NvSJ3665LfzjUV-Ap2jRz",
+        "PLBTanuC8SLeYgGgRfECgQj3V6sYH61WCt"
+      ]
+    },
+    {
+      "name": "Músicas Relaxantes",
+      "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/relax.jpg?raw=true",
+      "list": [
+        "PLu_qI3YSwSO-YgPUx8hZysNOyOUo_vfQ3",
+        "PL2hGGKKbxvqK84vUrUrv76ZwD1uyeCeW-",
+        "PLtd--8s9Fp4Xrgk-7m_GE5HHTTc5YvVwD"
+      ]
+    },
+    {
+      "name": "Músicas Acústicas",
+      "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/acoustic.jpg?raw=true",
+      "list": [
+        "PLwpFrtWg2EJFsZK90YBdU1PNei0Hfo0lb",
+        "PL0BD69368AB943C89",
+        "PLnsWUFGlWM3QdATJFSRu3EARnhfWg2w4m",
+        "PLPku4k6WFAddgrVbhcDMrM0cda3VthtDG"
+      ]
+    },
+    {
+      "name": "Músicas Pop",
+      "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/pop.jpg?raw=true",
+      "list": [
+        "PLkqz3S84Tw-RfPS9HHi3MRmrinOBKxIr8",
+        "PLDIoUOhQQPlXqz5QZ3dx-lh_p6RcPeKjv",
+        "PLWlTX25IDqIwqowTsJmGhqxUWU_6qgG1W",
+        "PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj"
+      ]
+    },
+    {
+      "name": "Músicas Rap",
+      "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/rap.jpg?raw=true",
+      "list": [
+        "PL7zsB-C3aNu3ppvsaPXX9ex3qbj-Dqzos",
+        "PL3-sRm8xAzY-556lOpSGH6wVzyofoGpzU"
+      ]
+    },
+    {
+      "name": "Músicas Hip-Hop",
+      "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/hiphop.jpg?raw=true",
+      "list": [
+        "PLetgZKHHaF-Zq1Abh-ZGC4liPd_CV3Uo4",
+        "PLUarU1HDBmlz8Yxs04vQYtIu-1gtJxVSl",
+        "PLAPo1R_GVX4IZGbDvUH60bOwIOnZplZzM",
+        "PLn4GvABOzCQuZrM1YBvzlYVCkQpZkhXLS"
+      ]
+    },
+    {
+      "name": "Músicas Trap",
+      "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/trap.jpg?raw=true",
+      "list": [
+        "PLm_3vnTS-pvnY6vI7m8SDcT4lA99kI-l-",
+        "PLuUrokoVSxlcHkpmmpa-RwKgPQMdbSvlb"
+      ]
+    }
+  ]
 }
