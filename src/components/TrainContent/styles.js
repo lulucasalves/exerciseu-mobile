@@ -77,7 +77,7 @@ export const styles = StyleSheet.create({
   buttonNext: {
     padding: 10,
     width: '100%',
-    marginBottom: 20,
+    marginBottom: 10,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center'

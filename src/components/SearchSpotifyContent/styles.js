@@ -24,14 +24,14 @@ export const styles = StyleSheet.create({
     height: 40
   },
   image: {
-    width: 60,
-    height: 60,
-    borderRadius: 10
+    width: 90,
+    height: 51,
+    borderRadius: 5
   },
   music: {
     alignItems: 'center',
     flexDirection: 'row',
-    marginBottom: 15
+    marginBottom: 25
   },
   tracks: {
     width: '100%'
@@ -39,13 +39,13 @@ export const styles = StyleSheet.create({
   textMusic: {
     fontFamily: 'WorkSans_500Medium',
     color: theme.text,
-    fontSize: 16,
+    fontSize: 14,
     marginLeft: 10
   },
   textArtist: {
     fontFamily: 'WorkSans_400Regular',
     color: theme.text,
-    fontSize: 14,
+    fontSize: 12,
     marginLeft: 10
   }
 })

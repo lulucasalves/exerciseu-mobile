@@ -4,10 +4,12 @@ export function getSearchMusics(search) {
   return new Promise((resolve, reject) => {
     ;(async () => {
       api
-        .get(`search?q=${search}&type=track&include_external=audio&limit=7`)
+        .get(
+          `search?part=snippet&type=video&key=AIzaSyCyIHp-JZsU1z3-ym_k7n8oyAYHo_OArAQ&topicId=/m/04rlf&order=rating&q=${search}`
+        )
         .then((res) => {
           if (res.status === 200 || res.status === 201) {
-            resolve(res.data.tracks.items)
+            resolve(res.data.items)
           } else {
             reject(res.data)
           }

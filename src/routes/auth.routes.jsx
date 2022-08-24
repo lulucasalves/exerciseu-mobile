@@ -1,5 +1,8 @@
 import React from 'react'
-import { createStackNavigator } from '@react-navigation/stack'
+import {
+  CardStyleInterpolators,
+  createStackNavigator
+} from '@react-navigation/stack'
 import { theme } from '../styles/theme'
 import { Login } from '../screens/Login'
 import { Home } from '../screens/Home'
@@ -27,20 +30,104 @@ export function AuthRoutes() {
       }}
     >
       <Screen name="Login" component={Login} />
-      <Screen name="Home" component={Home} />
-      <Screen name="Play" component={Play} />
-      <Screen name="GymAll" component={GymAll} />
-      <Screen name="GymRecent" component={GymRecent} />
-      <Screen name="GymExplore" component={GymExplore} />
-      <Screen name="Championship" component={ChampionShip} />
-      <Screen name="Configuration" component={Configuration} />
-      <Screen name="Profile" component={Profile} />
-      <Screen name="Exercise" component={Exercise} />
-      <Screen name="Select" component={SelectTrain} />
-      <Screen name="InitTrain" component={InitTrain} />
-      <Screen name="Train" component={Train} />
-      <Screen name="Spotify" component={Spotify} />
-      <Screen name="FinishTrain" component={FinishTrain} />
+      <Screen
+        options={{
+          animationEnabled: false
+        }}
+        name="Home"
+        component={Home}
+      />
+      <Screen
+        options={{
+          animationEnabled: false
+        }}
+        name="Play"
+        component={Play}
+      />
+      <Screen
+        options={{
+          animationEnabled: false
+        }}
+        name="GymAll"
+        component={GymAll}
+      />
+      <Screen
+        options={{
+          animationEnabled: false
+        }}
+        name="GymRecent"
+        component={GymRecent}
+      />
+      <Screen
+        options={{
+          animationEnabled: false
+        }}
+        name="GymExplore"
+        component={GymExplore}
+      />
+      <Screen
+        options={{
+          animationEnabled: false
+        }}
+        name="Championship"
+        component={ChampionShip}
+      />
+      <Screen
+        options={{
+          animationEnabled: false
+        }}
+        name="Configuration"
+        component={Configuration}
+      />
+      <Screen
+        options={{
+          animationEnabled: false
+        }}
+        name="Profile"
+        component={Profile}
+      />
+      <Screen
+        options={{
+          animationEnabled: false
+        }}
+        name="Exercise"
+        component={Exercise}
+      />
+      <Screen
+        options={{
+          animationEnabled: false
+        }}
+        name="Select"
+        component={SelectTrain}
+      />
+      <Screen
+        options={{
+          animationEnabled: false
+        }}
+        name="InitTrain"
+        component={InitTrain}
+      />
+      <Screen
+        options={{
+          animationEnabled: false
+        }}
+        name="Train"
+        component={Train}
+      />
+      <Screen
+        name="Spotify"
+        component={Spotify}
+        options={{
+          animationEnabled: false
+        }}
+      />
+      <Screen
+        options={{
+          animationEnabled: false
+        }}
+        name="FinishTrain"
+        component={FinishTrain}
+      />
     </Navigator>
   )
 }

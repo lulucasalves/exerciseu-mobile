@@ -9,6 +9,7 @@ import { TrainNavigation } from '../../components/TrainNavigation'
 import { getRemaining } from '../../utils/formatTime'
 import { Audio } from 'expo-av'
 import { useNavigation } from '@react-navigation/native'
+import { MusicPlayer } from '../../components/MusicPlayer'
 
 export function Train() {
   const { currentExercise } = useSelector((auth) => auth.exercise)
@@ -257,6 +258,7 @@ export function Train() {
         setExerciseSecs={setExerciseSecs}
         setRemainingSecs={setRemainingSecs}
       />
+      <MusicPlayer />
       <TrainNavigation
         spotify={spotify}
         setRepeat={setAutoMode}

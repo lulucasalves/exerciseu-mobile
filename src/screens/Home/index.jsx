@@ -5,7 +5,6 @@ import { DashboardHeader } from '../../components/DashboardHeader'
 import { LoadScreen } from '../../components/LoadScreen'
 import { Navigation } from '../../components/Navigation'
 
-
 export function Home() {
   const [loading, setLoading] = useState(false)
 
