@@ -78,7 +78,7 @@ export function SearchSpotifyContent() {
               )
             }
           })}
-          <Text style={styles.musicTitle}>Músicas Brasileiras</Text>
+          {/* <Text style={styles.musicTitle}>Músicas Brasileiras</Text> */}
         </View>
       </View>
     </ScrollView>

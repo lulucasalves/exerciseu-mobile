@@ -15,10 +15,18 @@ export function MusicPlayer() {
   const [playing, setPlaying] = useState(false)
   const [timer, setTimer] = useState(1000000000)
   const [musicPlay, setMusicPlay] = useState({ image: 'm', playlist: '' })
+  const [loading, setLoading] = useState(true)
   const playerRef = useRef()
 
   useEffect(() => {
-    if (currentMusic !== musicPlay) setMusicPlay(currentMusic)
+    setLoading(true)
+    setMusicPlay(currentMusic)
+    let interval = null
+
+    interval = setInterval(() => {
+      setLoading(false)
+      clearInterval(interval)
+    }, 100)
   }, [currentMusic])
 
   useEffect(() => {
@@ -53,9 +61,6 @@ export function MusicPlayer() {
       if (state === 'ended') {
         setPlaying(false)
       }
-
-      console.log(currentMusic)
-      console.log(musicPlay)
     },
     [musicPlay]
   )
@@ -119,7 +124,7 @@ export function MusicPlayer() {
             maximumTrackTintColor="#000000"
             thumbTintColor={theme.primary}
           />
-          {musicPlay.playlist.length > 0 && (
+          {!loading ? (
             <YoutubePlayer
               height={1}
               style={{ visibility: 'hidden' }}
@@ -129,7 +134,7 @@ export function MusicPlayer() {
               onChangeState={onStateChange}
               allowWebViewZoom={false}
             />
-          )}
+          ) : null}
         </View>
       </View>
       <Text style={styles.title}>
