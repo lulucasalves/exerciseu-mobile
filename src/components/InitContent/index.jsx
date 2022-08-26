@@ -17,7 +17,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 export function InitContent({ currentPlay, statusModal, preparationModal }) {
   const [audio, setAudio] = useState(true)
   const [vibrate, setVibrate] = useState(true)
-  const [spotify, setSpotify] = useState(true)
+  const [youtube, setYoutube] = useState(true)
   const [jump, setJump] = useState(true)
 
   const dispatch = useDispatch()
@@ -51,14 +51,14 @@ export function InitContent({ currentPlay, statusModal, preparationModal }) {
     ;(async () => {
       const storageAudio = await AsyncStorage.getItem('audio')
       const storageVibrate = await AsyncStorage.getItem('vibrate')
-      const storageSpotify = await AsyncStorage.getItem('spotify')
+      const storageYoutube = await AsyncStorage.getItem('youtube')
       const storageJump = await AsyncStorage.getItem('jump')
       const storagePreparation = await AsyncStorage.getItem('preparation')
       const storageStretch = await AsyncStorage.getItem('stretch')
 
       setAudio(translateVal(storageAudio))
       setVibrate(translateVal(storageVibrate))
-      setSpotify(translateVal(storageSpotify))
+      setYoutube(translateVal(storageYoutube))
       setJump(translateVal(storageJump))
 
       if (storagePreparation) {
@@ -79,7 +79,7 @@ export function InitContent({ currentPlay, statusModal, preparationModal }) {
       setPlayConfig({
         audio,
         vibrate,
-        spotify,
+        youtube,
         jump
       })
     )
@@ -87,12 +87,12 @@ export function InitContent({ currentPlay, statusModal, preparationModal }) {
     await AsyncStorage.removeItem('audio')
     await AsyncStorage.removeItem('vibrate')
     await AsyncStorage.removeItem('jump')
-    await AsyncStorage.removeItem('spotify')
+    await AsyncStorage.removeItem('youtube')
 
     await AsyncStorage.setItem('audio', translate(audio))
     await AsyncStorage.setItem('vibrate', translate(vibrate))
     await AsyncStorage.setItem('jump', translate(jump))
-    await AsyncStorage.setItem('spotify', translate(spotify))
+    await AsyncStorage.setItem('youtube', translate(youtube))
 
     navigation.navigate('Train')
   }
@@ -195,31 +195,31 @@ export function InitContent({ currentPlay, statusModal, preparationModal }) {
         </TouchableOpacity>
         <View style={styles.line} />
         <TouchableOpacity
-          onPress={() => booleanAlternate(spotify, setSpotify)}
+          onPress={() => booleanAlternate(youtube, setYoutube)}
           style={styles.configGroup}
         >
           <View style={styles.iconGroup}>
             <SimpleLineIcons
-              name="social-spotify"
+              name="social-youtube"
               size={25}
-              color={spotify ? theme.primary : theme.muted}
+              color={youtube ? theme.primary : theme.muted}
             />
             <Text
               style={[
                 styles.textGroup,
-                { textDecorationLine: spotify ? 'none' : 'line-through' }
+                { textDecorationLine: youtube ? 'none' : 'line-through' }
               ]}
             >
-              Spotify
+              Youtube Music
             </Text>
           </View>
           <Text
             style={[
               styles.active,
-              { color: spotify ? theme.primary : theme.muted }
+              { color: youtube ? theme.primary : theme.muted }
             ]}
           >
-            {spotify ? 'ativado' : 'desativado'}
+            {youtube ? 'ativado' : 'desativado'}
           </Text>
         </TouchableOpacity>
         <View style={styles.line} />

@@ -16,7 +16,7 @@ const playSlice = createSlice({
       preparation: 10,
       jump: 1,
       stretch: 0,
-      spotify: 1
+      youtube: 1
     }
   },
   reducers: {
@@ -24,13 +24,13 @@ const playSlice = createSlice({
       state.currentPlay = action.payload
     },
     setPlayConfig: (state, action) => {
-      const { audio, vibrate, jump, spotify } = action.payload
+      const { audio, vibrate, jump, youtube } = action.payload
       const { preparation, stretch } = state.config
       state.config = {
         audio,
         vibrate,
         jump,
-        spotify,
+        youtube,
         preparation,
         stretch
       }

@@ -4,7 +4,7 @@ import { styles } from './styles'
 import { useNavigation } from '@react-navigation/native'
 import { theme } from '../../styles/theme'
 
-export function HeaderSpotify({ title }) {
+export function HeaderYoutube({ title }) {
   const navigation = useNavigation()
   return (
     <View style={styles.container}>

@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux'
 import { setMusic } from '../../store/music'
 import { useNavigation } from '@react-navigation/native'
 
-export function SearchSpotifyContent() {
+export function SearchYoutubeContent() {
   const [title, setTitle] = useState('')
   const dispatch = useDispatch()
   const navigation = useNavigation()

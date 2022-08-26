@@ -18,7 +18,7 @@ import { SelectTrain } from '../screens/SelectTrain'
 import { InitTrain } from '../screens/InitTrain'
 import { Train } from '../screens/Train'
 import { FinishTrain } from '../screens/FinishTrain'
-import { Spotify } from '../screens/Spotify'
+import { Youtube } from '../screens/Youtube'
 const { Navigator, Screen } = createStackNavigator()
 
 export function AuthRoutes() {
@@ -118,8 +118,8 @@ export function AuthRoutes() {
         options={{
           animationEnabled: false
         }}
-        name="Spotify"
-        component={Spotify}
+        name="Youtube"
+        component={Youtube}
       />
       <Screen
         options={{
