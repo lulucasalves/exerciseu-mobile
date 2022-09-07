@@ -1,4 +1,4 @@
-package com.exerciseumobile.newarchitecture.modules;
+package com.linux.exerciseu.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

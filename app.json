@@ -16,7 +16,8 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.linux.exerciseu"
     },
     "android": {
       "adaptiveIcon": {
@@ -33,7 +34,7 @@
       [
         "expo-notifications",
         {
-          "icon": "./assets/icon.png",
+          "icon": "./assets/U.png",
           "color": "#508BF5",
           "sounds": [],
           "androidMode": "default",

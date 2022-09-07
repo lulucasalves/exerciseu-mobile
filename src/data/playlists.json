@@ -1,5 +1,5 @@
 {
-  "data": [
+  "international": [
     {
       "name": "Hits",
       "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/international.jpg?raw=true",
@@ -105,6 +105,94 @@
       "list": [
         "PLm_3vnTS-pvnY6vI7m8SDcT4lA99kI-l-",
         "PLuUrokoVSxlcHkpmmpa-RwKgPQMdbSvlb"
+      ]
+    }
+  ],
+  "brazilian": [
+    {
+      "name": "Músicas Mais Tocadas",
+      "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/mostplayed.jpg?raw=true",
+      "list": [
+        "PL_Q15fKxrBb5r3VmBvh7TVNMLx_F1sxfa",
+        "PLA6B239361CC92D14",
+        "PL_Q15fKxrBb4pXB0T50gBqxQnGTN4tww_",
+        "PLlYKDqBVDxX3Qf5DWNfXtkxVQCHQId9Lo",
+        "PLCwAHfhr-Gc82BO57__8Y-wEvZz8ytlHG",
+        "PLCwAHfhr-Gc_ntj-e_lD8jQ7waVriHhys",
+        "PL_Q15fKxrBb6m83-EUc4jDkB7ks2eszKk",
+        "PLB8HqqmpyIBfunQUYrqUI9VnnYS39UVxK"
+      ]
+    },
+    {
+      "name": "Músicas TikTok Brasil",
+      "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/tiktokbr.jpg?raw=true",
+      "list": [
+        "PL_ZoZbzdXc2iPGXbsrRcf0vm1nFwmpsUp",
+        "PL_bKAgO9uCN3ZR6KlPJDMPoJTob0z0mwP",
+        "PLY50G60VnAbyp7XBnSbCaoBppDi0VDqD4",
+        "PLJi1wHBSVkUwIXNyfzjBvydwZmwgPT5Kc",
+        "PL9RiXq3CWn9p01gv_9t7652Cf18FtgVJB",
+        "PLh70k7QWFMsrxdOlHRR9jgkC2THEUSqkf"
+      ]
+    },
+    {
+      "name": "Músicas Funk",
+      "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/funk.jpg?raw=true",
+      "list": [
+        "PLCwAHfhr-Gc82BO57__8Y-wEvZz8ytlHG",
+        "PL_Q15fKxrBb5F3Rf2WO6cpHT-nLEE49AX",
+        "PLPbMT4wSxX88wrawz8vnouXzCd12jhgOc",
+        "PLvYox0xue0MXuVdFgRO-R9mJlqMEPUrOL",
+        "PL3oW2tjiIxvRHWboyr0qy-wz-Hd_Wurix",
+        "PLvsY2lukrONuJipZKjdlgRVrgq695O1T1",
+        "PLTRU2u_bXJoreteN8efkt8c_13nOd40gs",
+        "PL_Q15fKxrBb6_TJ5wmUuRVztDxPoMfJeZ"
+      ]
+    },
+    {
+      "name": "Músicas Pagode",
+      "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/pagode.jpg?raw=true",
+      "list": [
+        "PLCwAHfhr-Gc_Ra3WPBZZDdzS1MNRgO1lq",
+        "PL2DA6SQLteYXo_CEmMn4NSmFGL9Fzuj7j",
+        "PL_Q15fKxrBb6RhjbDeTpjmFJsZXHeC6GX",
+        "PL_Q15fKxrBb5pckIW2RHwZbgf-FwRiCWr",
+        "PLlBnr9YGj2OrEvQJ6Dl2zL8xIltpGFc7C",
+        "PL3oW2tjiIxvT3pWYtbOAE5lao7otzWA_f"
+      ]
+    },
+    {
+      "name": "Músicas Sertanejo",
+      "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/sertanejo.jpg?raw=true",
+      "list": [
+        "PL_Q15fKxrBb5r3VmBvh7TVNMLx_F1sxfa",
+        "PL_Q15fKxrBb48q4ikbqaUgJxQx8U8AElL",
+        "PLJn4hP4ODKFxQhyzWIGZP0P_MqUj9z-Jh",
+        "PL0ao6cotJFFUgKFlnkidAO7S5pWXQtiLB",
+        "PLCwAHfhr-Gc_wCv4yrPBiZFFyaRDMraMl"
+      ]
+    },
+    {
+      "name": "Músicas MPB",
+      "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/mpb.jpg?raw=true",
+      "list": [
+        "PL_Q15fKxrBb7C163SjzBIPYMrGcNzb_-X",
+        "PL0ao6cotJFFXUTeOj6OGvxiMFL4mB9uWF",
+        "PL_Q15fKxrBb7Ij90C8s88dsnQagV97hkd",
+        "PL9IA2wt9WiE9S7S-njS18umfMpcUJasO2",
+        "PLKbUCgGyA9VjbZLCKc9ftkpB2m6kmhDEh"
+      ]
+    },
+    {
+      "name": "Músicas Forró",
+      "image": "https://github.com/lulucasalves/exerciseu-mobile/blob/main/.github/covers/forro.jpg?raw=true",
+      "list": [
+        "PLJn4hP4ODKFxQhyzWIGZP0P_MqUj9z-Jh",
+        "RDCLAK5uy_n0COhN_xYbYY9RGEPF1oa3annopsPfkH0",
+        "PL_Q15fKxrBb6n7RIRD_ns7TOsmoU3vm6d",
+        "PL_bKAgO9uCN2XT_2uqn6EjIRhdU_i3-o0",
+        "PLQGx8UJi4WExC7F3MTYiBWk07DAIg_asD",
+        "PLxFfose56Ajf5F-nGlOXC6MuqtrhY0x17"
       ]
     }
   ]

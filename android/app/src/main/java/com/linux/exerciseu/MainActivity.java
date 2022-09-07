@@ -1,4 +1,4 @@
-package com.exerciseumobile;
+package com.linux.exerciseu;
 
 import android.os.Build;
 import android.os.Bundle;

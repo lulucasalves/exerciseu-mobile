@@ -1,4 +1,4 @@
-package com.exerciseumobile.newarchitecture.components;
+package com.linux.exerciseu.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

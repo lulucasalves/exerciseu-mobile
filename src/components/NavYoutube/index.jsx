@@ -15,11 +15,9 @@ export function NavYoutube({ section }) {
           color="#fff"
         />
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('YoutubeCategories')}
-      >
+      <TouchableOpacity onPress={() => navigation.navigate('UserPlaylists')}>
         <Ionicons
-          name={section === 'categories' ? 'disc' : 'disc-outline'}
+          name={section === 'playlist' ? 'disc' : 'disc-outline'}
           size={25}
           color="#fff"
         />

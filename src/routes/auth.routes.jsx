@@ -19,6 +19,7 @@ import { InitTrain } from '../screens/InitTrain'
 import { Train } from '../screens/Train'
 import { FinishTrain } from '../screens/FinishTrain'
 import { Youtube } from '../screens/Youtube'
+import { UserPlaylists } from '../screens/UserPlaylists'
 const { Navigator, Screen } = createStackNavigator()
 
 export function AuthRoutes() {
@@ -120,6 +121,13 @@ export function AuthRoutes() {
         }}
         name="Youtube"
         component={Youtube}
+      />
+      <Screen
+        options={{
+          animationEnabled: false
+        }}
+        name="UserPlaylists"
+        component={UserPlaylists}
       />
       <Screen
         options={{

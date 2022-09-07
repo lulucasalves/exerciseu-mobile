@@ -1,4 +1,4 @@
-rootProject.name = 'exerciseumobile'
+rootProject.name = 'ExerciseU'
 include ':react-native-permissions'
 project(':react-native-permissions').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-permissions/android')
 include ':react-native-floating-bubble'
