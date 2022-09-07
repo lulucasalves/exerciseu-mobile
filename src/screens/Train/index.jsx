@@ -22,9 +22,21 @@ export function Train() {
     },
     {
       time: 6,
-      name: 'Descanso',
-      type: 0,
-      quantity: 0
+      name: 'Flexões2',
+      type: 1,
+      quantity: 20
+    },
+    {
+      time: 6,
+      name: 'Flexões3',
+      type: 1,
+      quantity: 20
+    },
+    {
+      time: 6,
+      name: 'Flexões4',
+      type: 1,
+      quantity: 20
     }
   ]
 
@@ -69,11 +81,7 @@ export function Train() {
   }, [currentExercise])
 
   useEffect(() => {
-    return sound
-      ? () => {
-          sound.unloadAsync()
-        }
-      : undefined
+    return sound ? () => sound.unloadAsync() : undefined
   }, [sound])
 
   function nextStep() {
@@ -83,14 +91,43 @@ export function Train() {
     if (exerciseSecs < trainTime - 5 && completeTrain.length > step) {
       if (trainType !== 0) {
         ;(async () => {
-          const totalValueStr = await AsyncStorage.getItem('totalTime')
-          const totalValue = totalValueStr ? parseInt(totalValueStr) : 0
+          const getTrainsStorage = await AsyncStorage.getItem('currentTrain')
 
-          await AsyncStorage.setItem(
-            'totalTime',
-            String(trainTime + totalValue)
-          )
-          await AsyncStorage.setItem('currentStep', String(step))
+          if (getTrainsStorage) {
+            const getTrainsStorageObject = JSON.parse(getTrainsStorage)
+
+            const getTrain = completeTrain[step - 1]
+
+            const newPromisesTrain = [
+              ...getTrainsStorageObject,
+              {
+                time: String(getTrain.time),
+                name: getTrain.name,
+                type: String(getTrain.type),
+                quantity: String(getTrain.quantity)
+              }
+            ]
+
+            await AsyncStorage.setItem(
+              'currentTrain',
+              JSON.stringify(newPromisesTrain)
+            )
+          } else {
+            const getTrain = completeTrain[step - 1]
+            const newPromisesTrain = [
+              {
+                time: String(getTrain.time),
+                name: getTrain.name,
+                type: String(getTrain.type),
+                quantity: String(getTrain.quantity)
+              }
+            ]
+
+            await AsyncStorage.setItem(
+              'currentTrain',
+              JSON.stringify(newPromisesTrain)
+            )
+          }
         })()
       }
       setStep((old) => old + 1)
@@ -102,7 +139,7 @@ export function Train() {
       setStep((old) => old + 1)
     } else {
       ;(async () => {
-        await AsyncStorage.setItem('currentStep', '')
+        await AsyncStorage.setItem('currentTrain', '')
         await AsyncStorage.setItem('exerciseId', '')
         navigation.navigate('FinishTrain')
       })()
@@ -135,6 +172,7 @@ export function Train() {
       let listStorage = myTrains
 
       if (exerciseId) {
+        //colocar get
         listStorage = myTrains
       }
 
@@ -228,15 +266,29 @@ export function Train() {
 
   useEffect(() => {
     ;(async () => {
-      const currentStep = await AsyncStorage.getItem('currentStep')
+      const currentStep = await AsyncStorage.getItem('currentTrain')
       const exerciseId = (await AsyncStorage.getItem('exerciseId')) || ''
+      let newStep = 0
+
+      if (currentStep) {
+        const formattedCurrentStep = JSON.parse(currentStep)
+
+        completeTrain.map((val, i) => {
+          if (
+            val.name ===
+            formattedCurrentStep[formattedCurrentStep.length - 1].name
+          ) {
+            newStep = i
+          }
+        })
+      }
 
       if (
-        parseInt(currentStep) > 0 &&
+        newStep > 0 &&
         exerciseId &&
         completeTrain.length > parseInt(currentStep)
       ) {
-        setStep(parseInt(currentStep))
+        setStep(newStep)
       }
     })()
   }, [completeTrain])

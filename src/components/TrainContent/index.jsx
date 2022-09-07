@@ -5,7 +5,6 @@ import CircularProgress from '../CircularOpt'
 import { styles } from './styles'
 import * as Notifications from 'expo-notifications'
 import { useEffect, useRef, useState } from 'react'
-import { formatTime } from '../../utils/formatTime'
 
 export function TrainContent({
   setIsActive,

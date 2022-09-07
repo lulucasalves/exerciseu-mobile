@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-  CardStyleInterpolators,
-  createStackNavigator
-} from '@react-navigation/stack'
+import { createStackNavigator } from '@react-navigation/stack'
 import { theme } from '../styles/theme'
 import { Login } from '../screens/Login'
 import { Home } from '../screens/Home'
@@ -20,6 +17,7 @@ import { Train } from '../screens/Train'
 import { FinishTrain } from '../screens/FinishTrain'
 import { Youtube } from '../screens/Youtube'
 import { UserPlaylists } from '../screens/UserPlaylists'
+import { ReturnTrain } from '../screens/ReturnTrain'
 const { Navigator, Screen } = createStackNavigator()
 
 export function AuthRoutes() {
@@ -135,6 +133,13 @@ export function AuthRoutes() {
         }}
         name="FinishTrain"
         component={FinishTrain}
+      />
+      <Screen
+        options={{
+          animationEnabled: false
+        }}
+        name="ReturnTrain"
+        component={ReturnTrain}
       />
     </Navigator>
   )
