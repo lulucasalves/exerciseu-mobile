@@ -9,7 +9,7 @@ export function InitHeader({ currentPlay }) {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate('Play')}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
         <Ionicons name="arrow-undo" size={30} color={theme.gray8} />
       </TouchableOpacity>
       <Text style={styles.text}>{currentPlay.title}</Text>

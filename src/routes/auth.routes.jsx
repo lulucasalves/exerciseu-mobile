@@ -28,7 +28,14 @@ export function AuthRoutes() {
         headerShown: false
       }}
     >
-      <Screen name="Login" component={Login} />
+      <Screen
+        name="Login"
+        options={{
+          animationEnabled: false,
+          gestureEnabled: false
+        }}
+        component={Login}
+      />
       <Screen
         options={{
           animationEnabled: false
@@ -108,7 +115,8 @@ export function AuthRoutes() {
       />
       <Screen
         options={{
-          animationEnabled: false
+          animationEnabled: false,
+          gestureEnabled: false
         }}
         name="Train"
         component={Train}
@@ -136,7 +144,8 @@ export function AuthRoutes() {
       />
       <Screen
         options={{
-          animationEnabled: false
+          animationEnabled: false,
+          gestureEnabled: false
         }}
         name="ReturnTrain"
         component={ReturnTrain}

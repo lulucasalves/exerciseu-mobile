@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useMemo, useState } from 'react'
 import { Text, View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   preferencesPreparation,
   preferencesStretch,
@@ -19,6 +19,7 @@ export function InitContent({ currentPlay, statusModal, preparationModal }) {
   const [vibrate, setVibrate] = useState(true)
   const [youtube, setYoutube] = useState(true)
   const [jump, setJump] = useState(true)
+  const { currentExercise } = useSelector((auth) => auth.exercise)
 
   const dispatch = useDispatch()
   const navigation = useNavigation()
@@ -72,7 +73,7 @@ export function InitContent({ currentPlay, statusModal, preparationModal }) {
   }, [])
 
   async function save() {
-    await AsyncStorage.setItem('exerciseId', '')
+    await AsyncStorage.setItem('exerciseId', currentExercise.id)
     await AsyncStorage.setItem('currentTrain', '')
 
     dispatch(

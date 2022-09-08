@@ -1,4 +1,4 @@
-import { TouchableOpacity, View } from 'react-native'
+import { Alert, TouchableOpacity, View } from 'react-native'
 import {
   Ionicons,
   MaterialCommunityIcons,
@@ -10,9 +10,26 @@ import { useNavigation } from '@react-navigation/native'
 export function TrainNavigation({ repeat, setRepeat, youtube }) {
   const navigation = useNavigation()
 
+  function createAlert() {
+    Alert.alert(
+      'Sair do Treino',
+      'Ao sair você perderá todo o seu progresso!',
+      [
+        {
+          text: 'voltar'
+        },
+        {
+          text: 'sair',
+          onPress: () => navigation.navigate('Home')
+        }
+      ],
+      { cancelable: true }
+    )
+  }
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+      <TouchableOpacity onPress={createAlert}>
         <Ionicons name="exit-outline" size={25} color="#fff" />
       </TouchableOpacity>
       {youtube && (

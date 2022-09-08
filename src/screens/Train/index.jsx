@@ -267,7 +267,7 @@ export function Train() {
   useEffect(() => {
     ;(async () => {
       const currentStep = await AsyncStorage.getItem('currentTrain')
-      const exerciseId = (await AsyncStorage.getItem('exerciseId')) || ''
+      const exerciseId = await AsyncStorage.getItem('exerciseId')
       let newStep = 0
 
       if (currentStep) {
@@ -283,12 +283,8 @@ export function Train() {
         })
       }
 
-      if (
-        newStep > 0 &&
-        exerciseId &&
-        completeTrain.length > parseInt(currentStep)
-      ) {
-        setStep(newStep)
+      if (newStep > 0 && exerciseId && completeTrain.length > newStep + 1) {
+        setStep(newStep + 1)
       }
     })()
   }, [completeTrain])

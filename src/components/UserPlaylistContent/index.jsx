@@ -34,37 +34,45 @@ export function UserPlaylistContent() {
     if (title.includes('list=')) {
       let [, playlist] = title.split('list=')
 
-      if (playlist.includes('&')) {
-        const [formattedPlaylist] = playlist.split('&')
-        playlist = formattedPlaylist
-      }
-      setTitle('')
+      if (playlist.length > 18) {
+        if (playlist.includes('&')) {
+          const [formattedPlaylist] = playlist.split('&')
+          playlist = formattedPlaylist
+        }
+        setTitle('')
 
-      const customPlaylists = await AsyncStorage.getItem('userPlaylists')
+        const customPlaylists = await AsyncStorage.getItem('userPlaylists')
 
-      if (customPlaylists) {
-        let listPlaylists = JSON.parse(customPlaylists)
-        if (listPlaylists.includes(playlist)) {
-          createAlert(
-            'Playlist Repetida',
-            'Esta playlist já existe na sua lista'
-          )
+        if (customPlaylists) {
+          let listPlaylists = JSON.parse(customPlaylists)
+          if (listPlaylists.includes(playlist)) {
+            createAlert(
+              'Playlist Repetida',
+              'Esta playlist já existe na sua lista'
+            )
+          } else {
+            listPlaylists.push(playlist)
+            await AsyncStorage.setItem(
+              'userPlaylists',
+              JSON.stringify(listPlaylists)
+            )
+          }
         } else {
-          listPlaylists.push(playlist)
           await AsyncStorage.setItem(
             'userPlaylists',
-            JSON.stringify(listPlaylists)
+            JSON.stringify([playlist])
           )
         }
-      } else {
-        await AsyncStorage.setItem('userPlaylists', JSON.stringify([playlist]))
-      }
-    } else {
+      } else
+        createAlert(
+          'Link Inválido',
+          'Não foi possível adicionar este item a sua playlist'
+        )
+    } else
       createAlert(
         'Link Inválido',
         'Não foi possível adicionar este item a sua playlist'
       )
-    }
 
     setUpdate(!update)
   }

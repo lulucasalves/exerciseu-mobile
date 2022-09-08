@@ -12,7 +12,7 @@ export function ExerciseHeader() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate('GymAll')}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
         <Ionicons name="arrow-undo" size={30} color="#fff" />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => save()} style={styles.save}>
